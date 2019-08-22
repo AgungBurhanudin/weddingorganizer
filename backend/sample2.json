@@ -1,0 +1,76 @@
+{
+    "XL": [{
+            "nilai": 100,
+            "produk_tipe": "25000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "50000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "100000"
+        }],
+    "THREE": [{
+            "nilai": 100,
+            "produk_tipe": "20000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "50000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "100000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "5000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "10000"
+        }],
+    "INDOSAT": [{
+            "nilai": 100,
+            "produk_tipe": "25000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "50000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "100000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "DATA50"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "DATA100"
+        }],
+    "SMARTFREN": [{
+            "nilai": 100,
+            "produk_tipe": "25000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "50000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "100000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "DATA50"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "DATA100"
+        }],
+    "TELKOMSEL": [{
+            "nilai": 100,
+            "produk_tipe": "25000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "50000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "100000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "10000"
+        }, {
+            "nilai": 100,
+            "produk_tipe": "20000"
+        }]
+}

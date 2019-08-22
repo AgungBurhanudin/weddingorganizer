@@ -1,0 +1,221 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pri",
+				"print_r"
+			],
+			[
+				"funcio",
+				"function_exists"
+			],
+			[
+				"php",
+				"phpinfo"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 269.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/complain",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/complain/business",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/complain/business/mysqlt",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/complain/response"
+	],
+	"file_history":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/template/view_pengirimanrespon.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/response/ViewKomplain.html.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/template/view_komplain.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/complain/business/mysqlt/complain.sql.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/retribution/response/ViewRetribusi.html.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/module/license/template/view_registration_form.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/response/ProcessRespon.proc.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/response/ViewInputKomplainDelegasi.html.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/response/DoAddKomplainDelegasi.json.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/response/ProcessKomplain.proc.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/business/mysqlt/Komplain.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain/business/mysqlt/komplain.sql.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/main/function/date.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/config/application.conf.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/response/ViewPengirimanRespon.html.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/business/mysqlt/komplainrespon.sql.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/response/ViewResponApp.html.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/komplain.respon/business/mysqlt/KomplainRespon.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/module/setting.email/response/ProcessEmail.proc.class.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/portal/config/gtfw_base_dir.def",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/gtfw_3.6/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/main/lib/barcode/html/function.php",
+		"/Applications/AMPPS/www/GT_GIT/PATI/2017_Pati_gtPerizinan/bo/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/GT_GIT/PATI/2017_Pati_gtPerizinan/gtfw_3.6/main/lib/gtfw/configuration/Configuration.class.php",
+		"/Volumes/Data/GT/base_3_6/main/lib/gtfw/configuration/Configuration.class.php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"insertKomplainDelegasi",
+			"load",
+			"\t\n",
+			"_autoload"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pati.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 323.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

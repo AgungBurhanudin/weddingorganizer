@@ -1,0 +1,23 @@
+Pasang coding Front End terbaru :
+IGT Production
+	Admin 	: igt.co.id/backoffice
+	Trx		: igt.co.id/transaksi
+	Reg		: igt.co.id/transaksi/register
+	APK		: igt.co.id/apk/igt.apk
+IGT Development	
+	Admin 	: akucek.com/igt/backoffice
+	Trx		: akucek.com/igt/transaksi
+	Reg		: akucek.com/igt/transaksi/register
+	APK		: akucek.com/igt/apk
+	
+Kartu Jajan Development :
+	Admin	: akucek.com/kartujajan/admin
+	Trx		: akucek.com/kartujajan/transaksi
+	Reg		: akucek.com/kartujajan/transaksi/register
+	APK		: akucek.com/kartujajan/apk
+	
+POIN Development :
+	Admin	: akucek.com/poin/admin
+	Trx		: akucek.com/poin/trx
+	Reg		: akucek.com/poin/trx/register
+	APK		: akucek.com/poin/apk

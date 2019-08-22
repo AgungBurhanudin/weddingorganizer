@@ -1,0 +1,33 @@
+{
+    "PULSAXL25": {
+        "nilai": 100
+    },
+    "PLNPREPAID": {
+        "nilai": 100
+    },
+    "TELKOMHALO": {
+        "nilai": 100
+    },
+    "PLNPOSTPAID": {
+        "nilai": 100
+    },
+    "TELKOMSPEEDY": {
+        "nilai": 100
+    },
+    "TELKOMVISION": {
+        "nilai": 100
+    },
+    "BPJSKESEHATAN": {
+        "nilai": 100
+    },
+    "PLNNONTAGLIST": {
+        "nilai": 100
+    },
+    "TELKOMTELEPON": {
+        "nilai": 100
+    },
+    "BPJSTENAGAKERJA": {
+        "nilai": 100
+    }
+}
+

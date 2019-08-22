@@ -1,0 +1,33 @@
+{
+    "name": "panada/panada",
+    "description": "A PHP Framework for those who love simplicity and performance at the same time",
+    "keywords": ["php", "panada", "framework", "High Performance", "simple"],
+    "homepage": "http://panadaframework.com/",
+    "type": "project",
+    "license": "BSD license",
+    "authors": [
+        {
+            "name": "Iskandar Soesman",
+            "email": "k4ndar@yahoo.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/panada/Panada/issues?state=open",
+        "forum": "https://github.com/panada/Panada/issues/",
+        "wiki": "http://panadaframework.com/documentation/id/",
+        "source": "https://github.com/panada/Panada/"
+    },
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "config": {
+        "vendor-dir": "panada/vendors"
+    },
+    "autoload": {
+        "classmap": ["panada/", "Tests/"]
+    },
+    "minimum-stability": "dev"
+}

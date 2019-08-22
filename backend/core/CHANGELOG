@@ -1,0 +1,65 @@
+Version 1.1.1
+-------------
+- Bug 97b3952: Bug fix for uri parse
+
+Version 1.1.0
+-------------
+- Bug 6283a2c: Fix error URI parse in when run Apache as php-cgi
+- New d9553ef: add prepare function PDO
+- Enh fd35d2b: Add altMessage for sending HTML email
+
+Version 1.1.0-beta
+-----------------------------------
+- Enh 42db3c6: Enhance Uri class
+- Bug 7ab433c: Bug fix for empty controller name
+- Enh 8aa4222: Update error page become more responsive
+- Enh a5748d5: Change default MySQL driver to Mysqli
+- Bug de4216c: Fix read error flag type
+- Bug 0b15dad: Bugfix for pg db driver
+- Enh 3c5c45d: Move getLastQuery Method to abstract class
+- Bug f48de0e: Bugfix: no data returned in DB results method
+- Enh dbfc219: Optimize db query and add iterator option support
+- New 94aa9fe: Add fetchAs type support. The options is: array, object or iterator
+- Enh 62c6227: Centralized repeated method and store it in abstract class
+- Enh aa29c25: Add new abstraction for all sql db driver
+
+Version 1.1.0-alfa Feb 14, 2014
+-------------------------------
+- Bug 14ba1a3: Bug fix for URI routing in numbers cPanel base apache
+- Bug 66f50b6: Bug fix for query builder for "OR" operator in criteria string
+- Enh 30d04af: exit with an error code in cli mode and re-format error message
+- New 34983a0: Add defined namespace config to load external libs
+- Bug 3af46ac: Fix error message in CLI mode
+- Enh f251e39: Enhance save method to except array data as an argument
+- Enh 600ce35: Enhance session cookie only work in http protocol only
+- Enh 8300481: Use serialize option only for native Panada cache method only. This is for consistency with other Redis client driver
+- Enh db7c039: Add pagination page status
+- Enh 30a34bd: Enhance validation class for displaying a name
+- Enh be5d5ae: Enhance $db property so inheritance class can use the db resource
+- New f63e03f: Automatic detect for insert or update operation in instantiate for AR model class
+- New 2e2251e: Update vendor method so it can call method constant from vendor class as refer to #61 issue
+- New 66c9631: Update json composer type from library to project
+- New 48aecc4: Embrace composer autoloader by adding new method "composer" in Import class
+- Bug d2354be: Bug fix if no data return in method getAll within AR call
+- New a475aba: Bug fix for "IN" database query with lowercase string
+- New 418b0bf: New redis auth method ref #56
+- New 86fab29: New getAllValue() method in Session Driver
+- Bug 1ad1359: Fix undefined APP constant in check.php file
+- New 4f5c3b6: Add image multiple processing in one upload process
+- Bug 58327fd: Fix for issue #58
+- Bug 67ae4b4: Fix error when generate $cacheKey for array value in Resource\ActiveRecord::get() method
+- Bug 5e88f22: Fix typo for "connect" word
+- Bug d096fca: Fix indentation
+- Bug b026cd1: Fix PGDriver for encoding option
+- New 844e393: Add this CHANGELOG file
+- New ca43ad3: Add default time zone setter
+- New cc5cc53: Add composer.json file
+- New 85ef534: Add default exception handler for global uncaught exception
+- Enh 9b4c67d: Remove try catch in Drivers\Cache\Redis and throw it to default exception handler
+- Bug 76cc343: Fix bug getFileExtension in PHP 5.4.6 ref #55
+- New d6b652e: Add storageName in session config file as cookieChekSumName value so it more configable
+- Enh 7ce0be9: Enhance process for creation of nested directories in Resource\Upload::errorHandler() method
+ 
+Version 1.0.0 Dec 20, 2012
+----------------------------
+Initial release

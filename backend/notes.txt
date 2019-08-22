@@ -1,0 +1,103 @@
+2018-04-01
+db: 
+tbl_product_map
+    provider character varying(20),
+    hpp integer DEFAULT 0,
+    admin_bank integer DEFAULT 0,
+    margin smallint DEFAULT 0,
+
+tbl_member_account
+    fee jsonb DEFAULT '{}'::jsonb,
+    fee_dist smallint DEFAULT 0,
+    hak_saldo smallint DEFAULT 0,
+
+log_konfirmasi_topup 
+    norek_tujuan character varying(50),
+
+log_message
+    notif smallint DEFAULT 0,
+
+
+tambahkan data menu
+insert into tbl_menu (perintah) values ('tbl_member_channel_block');
+insert into tbl_menu (perintah) values ('menu_edit_setting_korwil');
+insert into tbl_menu (perintah) values ('menu_edit_setting_ca');
+insert into tbl_menu (perintah) values ('rpaging_distribusi_fee_m1');
+insert into tbl_menu (perintah) values ('rpaging_distribusi_fee_m2');
+insert into tbl_menu (perintah) values ('rpaging_distribusi_fee_m3');
+insert into tbl_menu (perintah) values ('menu_ganti_nohp_email');
+
+2018-05-06
+tambahkan kolom margin di log_channel_trx
+
+2018-07-16
+ALTER TABLE "public"."tbl_member_account"
+ADD COLUMN "saldo_sekolah" int8;
+
+2018-07-17
+ALTER TABLE "public"."tbl_member_account"
+ADD COLUMN "is_flexible" int2 DEFAULT 0;
+
+2018-07-18
+ALTER TABLE "public"."log_data_trx"	
+ADD COLUMN "is_flexible" int2 DEFAULT 0;
+
+ALTER TABLE "public"."tbl_member_channel"
+ADD COLUMN "va_1" varchar(30),
+ADD COLUMN "va_2" varchar(30),
+ADD COLUMN "va_3" varchar(30),
+ADD COLUMN "va_4" varchar(30);
+
+2018-07-19
+ALTER TABLE "public"."tbl_member_channel"
+ADD CONSTRAINT "tbl_member_channel_id_sekolah" UNIQUE ("id_sekolah"),
+ADD CONSTRAINT "tbl_member_channel_nis" UNIQUE ("nis");
+
+insert into tbl_menu (perintah) values ('menu_topup_saldo_sekolah');
+insert into tbl_menu (perintah) values ('menu_transfer_saldo_sekolah');
+insert into tbl_menu (perintah) values ('menu_upload_saldo_sekolah');
+insert into tbl_menu (perintah) values ('validasi_siswa');
+
+ALTER TABLE "public"."tbl_contents" RENAME "highligth" TO "highlight";
+
+2018-07-26
+CREATE TABLE "public"."app_setting" (
+"setting_id" SERIAL NOT NULL,
+"setting_name" varchar(30),
+"setting_value" varchar(30),
+"setting_description" varchar(30),
+"setting_contents" jsonb,
+PRIMARY KEY ("setting_id")
+)
+WITH (OIDS=FALSE)
+;
+
+2018-08-24:
+ALTER TABLE "public"."tbl_guru"
+ADD COLUMN "nohp" varchar(32),
+ADD COLUMN "is_registered" int2,
+ADD COLUMN "password" varchar(255),
+ADD COLUMN "reg_date" date,
+ADD COLUMN "last_used" date,
+ADD COLUMN "appid" int4,
+ADD COLUMN "token" varchar(25),
+ADD COLUMN "ip" varchar(255),
+ADD COLUMN "salah_pin" int2,
+ADD COLUMN "email" varchar(255);
+
+2018-08-31:
+ALTER TABLE "public"."tbl_absensi"
+ADD COLUMN "id_sekolah" int2,
+ADD COLUMN "siswa" int2,
+ADD COLUMN "input_time" timestamp,
+ADD COLUMN "keterangan" varchar(255);
+
+2018-09-24:
+ALTER TABLE "public"."tbl_member_channel"
+ADD COLUMN "set_limit_trx" int4,
+ADD COLUMN "akumulasi_limit" jsonb,
+ADD COLUMN "total_limit" int4;
+
+
+
+
