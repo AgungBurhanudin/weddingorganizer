@@ -1,4 +1,5 @@
-
+<h2>Biodata Pengantin Pria</h2>
+<hr>
 <div>
     <div class="col-md-6" style="float: left">
         <div class="form-group">

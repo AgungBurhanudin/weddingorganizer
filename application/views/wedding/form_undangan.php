@@ -1,3 +1,5 @@
+<h2>Daftar Undangan</h2>
+<hr>
 <a href="#" data-toggle="modal" data-target="#myModal">
     <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-plus"></i> Tambah Undangan</button>
 </a>
