@@ -224,7 +224,13 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Penyelenggara</label>
-                                                            <select class="form-control" name="penyelenggara" id="penyelenggara"></select>
+
+                                                            <select class="form-control" name="penyelenggara" id="penyelenggara">
+                                                                <option value="">-- Pilih Penyelenggara --</option>
+                                                                <option value="PRIA">Pihak Pria</option>
+                                                                <option value="WANITA">Pihak Wanita</option>
+                                                                <option value="KEDUA">Kedua Pihak</option>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Jumlah Undangan</label>
