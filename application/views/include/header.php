@@ -15,7 +15,7 @@
         <link href="<?= base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?= base_url() ?>assets/vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
         <!-- Main styles for this application-->
-        <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
+        <link href="<?= base_url() ?>assets/css/style.min.css" rel="stylesheet">
         <link href="<?= base_url() ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
         <!-- Include SmartWizard CSS -->
         <link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard.min.css" rel="stylesheet" type="text/css" />

@@ -2,9 +2,9 @@
 <main class="main">
     <!-- Breadcrumb-->
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Wedding</li>
+        <li class="breadcrumb-item">The Wedding</li>
         <li class="breadcrumb-item active">
-            <a href="#">Data</a>
+            <a href="<?= base_url() ?>Wedding">Data Wedding</a>
         </li>
         <!--<li class="breadcrumb-item active">Data</li>-->
         <!-- Breadcrumb Menu-->
@@ -70,7 +70,9 @@
                                             <strong>10 sec ago</strong>
                                         </td>
                                         <td>
+                                        <a href="<?= base_url() ?>Wedding/form">
                                             <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Detail</button>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
