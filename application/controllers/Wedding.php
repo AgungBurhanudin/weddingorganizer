@@ -23,7 +23,7 @@ class Wedding extends CI_Controller
 
   public function form()
   {
-    render('wedding/form');
+    render('wedding/form2');
   }
 
 }
