@@ -10,23 +10,37 @@
         <tr>
             <th>No</th>
             <th>Nama Vendor</th>
-            <th>Alamat</th>
             <th>CP</th>
+            <th>Phone</th>
             <th>Tipe Vendor</th>
             <th>Biaya</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <?php
+        $no = 1;
+        if (!empty($vendor)) {
+            foreach ($vendor as $val) {
+                ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $val->nama_vendor ?></td>
+                    <td><?= $val->cp ?></td>
+                    <td><?= $val->nohp_cp ?></td>
+                    <td><?= $val->kategori_nama ?></td>
+                    <td><?= $val->biayan ?></td>
+                    <td>
+                        <a href="<?= base_url() ?>Wedding/vendor/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="<?= base_url() ?>Wedding/vendor/delete?id=<?= $val->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>                    
+                    </td>
+                </tr>
+                <?php
+            }
+        } else {
+            echo "<tr><td colspan='7'>Data Vendor Masih Kosong</td></tr>";
+        }
+        ?>
     </tbody>
 </table>
 

@@ -49,6 +49,9 @@
                                 <li class="nav-item detail-wedding">
                                     <a class="nav-link" data-toggle="tab" href="#jadwal" role="tab" aria-controls="jadwal">Jadwal Meeting</a>
                                 </li>
+                                <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-controls="log">Log Aktivitas</a>
+                                </li>
                             </ul>
                             <br>
                             <div>
@@ -74,6 +77,9 @@
                                 </div>
                                 <div class="tab-pane" id="jadwal" role="tabpanel">
                                     <?php $this->load->view('wedding/jadwal_meeting'); ?>
+                                </div>
+                                <div class="tab-pane" id="log" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_log'); ?>
                                 </div>
                             </div>
                         </main>
