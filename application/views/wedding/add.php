@@ -1,4 +1,3 @@
-
 <main class="main">
     <!-- Breadcrumb-->
     <ol class="breadcrumb">
@@ -21,25 +20,25 @@
                             <div class="container">
                                 <div class="stepwizard">
                                     <div class="stepwizard-row setup-panel">
-                                        <div class="stepwizard-step col-xs-3"> 
+                                        <div class="stepwizard-step col-xs-3">
                                             <!--<a href="#step-1" class="active">-->
                                             <button onclick="moveTab('step-1', 'step-2', 'step-3', 'step-4', 'step-5')" id="btn_step-1" type="button" class="btn btn-success btn-circle">1</button>
                                             <!--</a>-->
                                             <p><small>Data Pribadi Pengantin Wanita</small></p>
                                         </div>
-                                        <div class="stepwizard-step col-xs-3"> 
+                                        <div class="stepwizard-step col-xs-3">
                                             <button onclick="moveTab('step-2', 'step-1', 'step-3', 'step-4', 'step-5')" id="btn_step-2" href="#step-2" type="button" class="btn btn-primary btn-circle" disabled="disabled">2</button>
                                             <p><small>Data Pribadi Pengantin Wanita</small></p>
                                         </div>
-                                        <div class="stepwizard-step col-xs-3"> 
+                                        <div class="stepwizard-step col-xs-3">
                                             <button onclick="moveTab('step-3', 'step-2', 'step-1', 'step-4', 'step-5')" id="btn_step-3" href="#step-3" type="button" class="btn btn-primary btn-circle" disabled="disabled">3</button>
                                             <p><small>Data Pernikahan</small></p>
                                         </div>
-                                        <div class="stepwizard-step col-xs-3"> 
+                                        <div class="stepwizard-step col-xs-3">
                                             <button onclick="moveTab('step-4', 'step-2', 'step-1', 'step-3', 'step-5')" id="btn_step-4" href="#step-4" type="button" class="btn btn-primary btn-circle" disabled="disabled">4</button>
                                             <p><small>Paket Pernikahan</small></p>
                                         </div>
-                                        <div class="stepwizard-step col-xs-3"> 
+                                        <div class="stepwizard-step col-xs-3">
                                             <button onclick="finish()" id="btn_step-5" href="#step-5" type="button" class="btn btn-primary btn-circle" disabled="disabled">5</button>
                                             <p><small>Selesai</small></p>
                                         </div>
@@ -71,46 +70,46 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Nama Panggilan Pengantin Pria</label>
-                                                            <input name="nama_panggilan_pria" id="nama_panggilan_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="nama_panggilan_pria" id="nama_panggilan_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat Sekarang Pengantin Pria</label>
-                                                            <input name="alamat_sekarang_pria" id="alamat_sekarang_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_sekarang_pria" id="alamat_sekarang_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat setelah nikah Pengantin Pria</label>
-                                                            <input name="alamat_nikah_pria" id="alamat_nikah_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_nikah_pria" id="alamat_nikah_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="float: left">
                                                         <div class="form-group">
                                                             <label class="control-label">Tempat Lahir Pengantin Pria</label>
-                                                            <input name="tempat_lahir_pria" id="tempat_lahir_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="tempat_lahir_pria" id="tempat_lahir_pria" type="text" required="required" class="form-control" />
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="control-label">Tanggal Lahir Pengantin Pria</label>
-                                                            <input name="tanggal_lahir_pria" id="tanggal_lahir_pria" type="date" required="required" class="form-control"  />
+                                                            <input name="tanggal_lahir_pria" id="tanggal_lahir_pria" type="date" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">No Hp Pengantin Pria</label>
-                                                            <input name="no_hp_pria" id="no_hp_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="no_hp_pria" id="no_hp_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Agama Pengantin Pria</label>
-                                                            <input name="agama_pria" id="agama_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="agama_pria" id="agama_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Pendidikan Pengantin Pria</label>
-                                                            <input name="pendidikan_pria" id="pendidikan_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="pendidikan_pria" id="pendidikan_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Hobi Pengantin Pria</label>
-                                                            <input name="hobi_pria" id="hobi_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="hobi_pria" id="hobi_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Sosmed Pengantin Pria</label>
-                                                            <input name="sosmed_pria" id="sosmed_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="sosmed_pria" id="sosmed_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,46 +139,46 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Nama Panggilan Pengantin Wanita</label>
-                                                            <input name="nama_panggilan_wanita" id="nama_panggilan_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="nama_panggilan_wanita" id="nama_panggilan_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat Sekarang Pengantin Wanita</label>
-                                                            <input name="alamat_sekarang_wanita" id="alamat_sekarang_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_sekarang_wanita" id="alamat_sekarang_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat setelah nikah Pengantin Wanita</label>
-                                                            <input name="alamat_nikah_wanita" id="alamat_nikah_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_nikah_wanita" id="alamat_nikah_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="float: left">
                                                         <div class="form-group">
                                                             <label class="control-label">Tempat Lahir Pengantin Wanita</label>
-                                                            <input name="tempat_lahir_wanita" id="tempat_lahir_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="tempat_lahir_wanita" id="tempat_lahir_wanita" type="text" required="required" class="form-control" />
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="control-label">Tanggal Lahir Pengantin Wanita</label>
-                                                            <input name="tanggal_lahir_wanita" id="tanggal_lahir_wanita" type="date" required="required" class="form-control"  />
+                                                            <input name="tanggal_lahir_wanita" id="tanggal_lahir_wanita" type="date" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">No Hp Pengantin Wanita</label>
-                                                            <input name="no_hp_wanita" id="no_hp_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="no_hp_wanita" id="no_hp_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Agama Pengantin Wanita</label>
-                                                            <input name="agama_wanita" id="agama_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="agama_wanita" id="agama_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Pendidikan Pengantin Wanita</label>
-                                                            <input name="pendidikan_wanita" id="pendidikan_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="pendidikan_wanita" id="pendidikan_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Hobi Pengantin Wanita</label>
-                                                            <input name="nama_lengkap_pria" id="nama_lengkap_pria" type="text" required="required" class="form-control"  />
+                                                            <input name="nama_lengkap_pria" id="nama_lengkap_pria" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Sosmed Pengantin Wanita</label>
-                                                            <input name="sosmed_wanita" id="sosmed_wanita" type="text" required="required" class="form-control"  />
+                                                            <input name="sosmed_wanita" id="sosmed_wanita" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,30 +196,30 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Tanggal Pernikahan</label>
-                                                            <input name="tanggal_pernikahan" id="tanggal_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="tanggal_pernikahan" id="tanggal_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Waktu Pernikahan</label>
-                                                            <input name="waktu_pernikahan" id="waktu_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="waktu_pernikahan" id="waktu_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Lokasi Pernikahan</label>
-                                                            <input name="lokasi_pernikahan" id="lokasi_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="lokasi_pernikahan" id="lokasi_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat Lokasi Pernikahan</label>
-                                                            <input name="alamat_pernikahan" id="alamat_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_pernikahan" id="alamat_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="float: left">
 
                                                         <div class="form-group">
                                                             <label class="control-label">Tema Pernikahan</label>
-                                                            <input name="tema_pernikahan" id="tema_pernikahan" type="date" required="required" class="form-control"  />
+                                                            <input name="tema_pernikahan" id="tema_pernikahan" type="date" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Hastag Pernikahan</label>
-                                                            <input name="hastag_pernikahan" id="hastag_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="hastag_pernikahan" id="hastag_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Penyelenggara</label>
@@ -234,7 +233,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Jumlah Undangan</label>
-                                                            <input name="jumlah_undangan" id="jumlah_undangan" type="text" required="required" class="form-control"  />
+                                                            <input name="jumlah_undangan" id="jumlah_undangan" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -251,30 +250,30 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Tanggal Pernikahan</label>
-                                                            <input name="tanggal_pernikahan" id="tanggal_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="tanggal_pernikahan" id="tanggal_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Waktu Pernikahan</label>
-                                                            <input name="waktu_pernikahan" id="waktu_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="waktu_pernikahan" id="waktu_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Lokasi Pernikahan</label>
-                                                            <input name="lokasi_pernikahan" id="lokasi_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="lokasi_pernikahan" id="lokasi_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Alamat Lokasi Pernikahan</label>
-                                                            <input name="alamat_pernikahan" id="alamat_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="alamat_pernikahan" id="alamat_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="float: left">
 
                                                         <div class="form-group">
                                                             <label class="control-label">Tema Pernikahan</label>
-                                                            <input name="tema_pernikahan" id="tema_pernikahan" type="date" required="required" class="form-control"  />
+                                                            <input name="tema_pernikahan" id="tema_pernikahan" type="date" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Hastag Pernikahan</label>
-                                                            <input name="hastag_pernikahan" id="hastag_pernikahan" type="text" required="required" class="form-control"  />
+                                                            <input name="hastag_pernikahan" id="hastag_pernikahan" type="text" required="required" class="form-control" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Penyelenggara</label>
@@ -282,7 +281,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Jumlah Undangan</label>
-                                                            <input name="jumlah_undangan" id="jumlah_undangan" type="text" required="required" class="form-control"  />
+                                                            <input name="jumlah_undangan" id="jumlah_undangan" type="text" required="required" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,18 +301,19 @@
 </main>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#step-2").attr('class', 'hide');
     });
+
     function moveStep(from, to) {
         $("#btn_" + to).removeAttr('disabled');
         $("#btn_" + to).removeClass('btn-primary');
         $("#btn_" + to).addClass('btn-success');
 
 
-//        $("#btn_" + from).attr('disabled','disabled');
-//        $("#btn_" + from).removeClass('btn-success');
-//        $("#btn_" + from).addClass('btn-primary');
+        //        $("#btn_" + from).attr('disabled','disabled');
+        //        $("#btn_" + from).removeClass('btn-success');
+        //        $("#btn_" + from).addClass('btn-primary');
 
         $("#" + to).removeClass('hide');
         $("#" + to).addClass('active_form');
@@ -321,6 +321,7 @@
         $("#" + from).removeClass('active_form');
         $("#" + from).addClass('hide');
     }
+
     function moveTab(tab, hideTab, hideTab2, hideTab3, hideTab4) {
 
         $("#" + tab).removeClass('hide');
@@ -338,6 +339,7 @@
         $("#" + hideTab4).removeClass('active_form');
         $("#" + hideTab4).addClass('hide');
     }
+
     function finish() {
         var to = "step-5";
         $("#btn_" + to).removeAttr('disabled');

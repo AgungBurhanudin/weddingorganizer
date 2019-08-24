@@ -57,8 +57,8 @@ if (empty($data_user)) {
                                                     foreach ($data_company as $val) {
                                                         $select = ($company == $val->id) ? "selected" : "";
                                                         ?>
-                                                        <option <?= $select ?> value="<?= $val->id ?>"><?= $val->nama ?></option>
-                                                        <?php
+                                                    <option <?= $select ?> value="<?= $val->id ?>"><?= $val->nama ?></option>
+                                                    <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -67,20 +67,20 @@ if (empty($data_user)) {
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Nama <span class="red">*</span></label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="user_real_name" id="user_real_name" placeholder="Nama" required="required"  value="<?= $user_real_name ?>">
+                                                <input class="form-control" type="text" name="user_real_name" id="user_real_name" placeholder="Nama" required="required" value="<?= $user_real_name ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">User Name <span class="red">*</span></label>
                                             <div class="col-md-9">
-                                                <input onkeyup="validationForm(this)"  class="form-control" type="text" name="user_user_name" id="user_user_name" placeholder="Username" required="required"  value="<?= $user_user_name ?>">
+                                                <input onkeyup="validationForm(this)" class="form-control" type="text" name="user_user_name" id="user_user_name" placeholder="Username" required="required" value="<?= $user_user_name ?>">
                                                 <span class="msg_form"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Email</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text"  name="user_email" id="user_email" placeholder="Email"  value="<?= $user_email ?>">
+                                                <input class="form-control" type="text" name="user_email" id="user_email" placeholder="Email" value="<?= $user_email ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -93,7 +93,7 @@ if (empty($data_user)) {
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Konfirmasi Password <span class="red">*</span></label>
                                             <div class="col-md-9">
-                                                <input onkeyup="validationForm(this)"  class="form-control" type="password" name="repassword" id="repassword" placeholder="Konfirmasi Password" required="required">
+                                                <input onkeyup="validationForm(this)" class="form-control" type="password" name="repassword" id="repassword" placeholder="Konfirmasi Password" required="required">
                                                 <span class="msg_form"></span>
                                             </div>
                                         </div>
@@ -102,14 +102,14 @@ if (empty($data_user)) {
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Grup User <span class="red">*</span></label>
                                             <div class="col-md-9">
-                                                <select name="user_group" id="user_group" class="form-control" required="required"> 
+                                                <select name="user_group" id="user_group" class="form-control" required="required">
                                                     <option value=""> -- Pilih Grup --</option>
                                                     <?php
                                                     foreach ($app_group as $val) {
                                                         $select = ($group == $val->group_id) ? "selected" : "";
                                                         ?>
-                                                        <option <?= $select ?> value="<?= $val->group_id ?>"><?= $val->group_name ?></option>
-                                                        <?php
+                                                    <option <?= $select ?> value="<?= $val->group_id ?>"><?= $val->group_name ?></option>
+                                                    <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -118,19 +118,19 @@ if (empty($data_user)) {
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">No Telephone </label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="user_phone" id="user_phone" placeholder="Telephone"  value="<?= $user_phone ?>">
+                                                <input class="form-control" type="text" name="user_phone" id="user_phone" placeholder="Telephone" value="<?= $user_phone ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Alamat </label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="user_address" id="user_address" placeholder="Alamat"  value="<?= $user_address ?>">
+                                                <input class="form-control" type="text" name="user_address" id="user_address" placeholder="Alamat" value="<?= $user_address ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label" for="text-input">Keterangan</label>
                                             <div class="col-md-9">
-                                                <input class="form-control" type="text" name="user_desc" id="user_desc" placeholder="Keterangan"  value="<?= $user_desc ?>">
+                                                <input class="form-control" type="text" name="user_desc" id="user_desc" placeholder="Keterangan" value="<?= $user_desc ?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
