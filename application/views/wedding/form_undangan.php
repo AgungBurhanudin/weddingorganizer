@@ -19,13 +19,27 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <?php
+        $no = 1;
+        if (!empty($undangan)) {
+            foreach ($undangan as $val) {
+                ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $val->nama ?></td>
+                    <td><?= $val->alamat ?></td>
+                    <td><?= $val->tipe_undangan ?></td>
+                    <td>
+                        <a href="<?= base_url() ?>Wedding/undangan/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="<?= base_url() ?>Wedding/undangan/delete?id=<?= $val->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>                    
+                    </td>
+                </tr>
+                <?php
+            }
+        } else {
+            echo "<tr><td colspan='7'>Data Vendor Masih Kosong</td></tr>";
+        }
+        ?>
     </tbody>
 </table>
 

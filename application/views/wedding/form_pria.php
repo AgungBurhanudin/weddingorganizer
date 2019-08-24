@@ -1,3 +1,55 @@
+<?php
+if (!empty($pria)) {
+    $id = $pria->id;
+    $id_wedding = $pria->id_wedding;
+    $nama_lengkap = $pria->nama_lengkap;
+    $nama_panggilan = $pria->nama_panggilan;
+    $gender = $pria->gender;
+    $alamat_sekarang = $pria->alamat_sekarang;
+    $alamat_nikah = $pria->alamat_nikah;
+    $tempat_lahir = $pria->tempat_lahir;
+    $tanggal_lahir = $pria->tanggal_lahir;
+    $no_hp = $pria->no_hp;
+    $agama = $pria->agama;
+    $pendidikan = $pria->pendidikan;
+    $hobi = $pria->hobi;
+    $sosmed = $pria->sosmed;
+    $status = $pria->status;
+} else {
+    $id = "";
+    $id_wedding = "";
+    $nama_lengkap = "";
+    $nama_panggilan = "";
+    $gender = "";
+    $alamat_sekarang = "";
+    $alamat_nikah = "";
+    $tempat_lahir = "";
+    $tanggal_lahir = "";
+    $no_hp = "";
+    $agama = "";
+    $pendidikan = "";
+    $hobi = "";
+    $sosmed = "";
+    $status = "";
+}
+?>
+<script>
+    $("#id_pria").val('<?= $id ?> ');
+    $("#id_wedding_pria").val('<?= $id_wedding ?> ');
+    $("#nama_lengkap_pria").val('<?= $nama_lengkap ?> ');
+    $("#nama_panggilan_pria").val('<?= $nama_panggilan ?> ');
+    $("#gender_pria").val('<?= $gender ?> ');
+    $("#alamat_sekarang_pria").val('<?= $alamat_sekarang ?> ');
+    $("#alamat_nikah_pria").val('<?= $alamat_nikah ?> ');
+    $("#tempat_lahir_pria").val('<?= $tempat_lahir ?> ');
+    $("#tanggal_lahir_pria").val('<?= $tanggal_lahir ?> ');
+    $("#no_hp_pria").val('<?= $no_hp ?> ');
+    $("#agama_pria").val('<?= $agama ?> ');
+    $("#pendidikan_pria").val('<?= $pendidikan ?> ');
+    $("#hobi_pria").val('<?= $hobi ?> ');
+    $("#sosmed_pria").val('<?= $sosmed ?> ');
+    $("#status_pria").val('<?= $status ?> ');
+</script>
 <div style="float: right">
     <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
 </div>

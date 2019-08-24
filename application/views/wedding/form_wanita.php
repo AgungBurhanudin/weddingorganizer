@@ -1,3 +1,55 @@
+<?php
+if (!empty($wanita)) {
+    $id = $wanita->id;
+    $id_wedding = $wanita->id_wedding;
+    $nama_lengkap = $wanita->nama_lengkap;
+    $nama_panggilan = $wanita->nama_panggilan;
+    $gender = $wanita->gender;
+    $alamat_sekarang = $wanita->alamat_sekarang;
+    $alamat_nikah = $wanita->alamat_nikah;
+    $tempat_lahir = $wanita->tempat_lahir;
+    $tanggal_lahir = $wanita->tanggal_lahir;
+    $no_hp = $wanita->no_hp;
+    $agama = $wanita->agama;
+    $pendidikan = $wanita->pendidikan;
+    $hobi = $wanita->hobi;
+    $sosmed = $wanita->sosmed;
+    $status = $wanita->status;
+} else {
+    $id = "";
+    $id_wedding = "";
+    $nama_lengkap = "";
+    $nama_panggilan = "";
+    $gender = "";
+    $alamat_sekarang = "";
+    $alamat_nikah = "";
+    $tempat_lahir = "";
+    $tanggal_lahir = "";
+    $no_hp = "";
+    $agama = "";
+    $pendidikan = "";
+    $hobi = "";
+    $sosmed = "";
+    $status = "";
+}
+?>
+<script>
+    $("#id_wanita").val('<?= $id ?> ');
+    $("#id_wedding_wanita").val('<?= $id_wedding ?> ');
+    $("#nama_lengkap_wanita").val('<?= $nama_lengkap ?> ');
+    $("#nama_panggilan_wanita").val('<?= $nama_panggilan ?> ');
+    $("#gender_wanita").val('<?= $gender ?> ');
+    $("#alamat_sekarang_wanita").val('<?= $alamat_sekarang ?> ');
+    $("#alamat_nikah_wanita").val('<?= $alamat_nikah ?> ');
+    $("#tempat_lahir_wanita").val('<?= $tempat_lahir ?> ');
+    $("#tanggal_lahir_wanita").val('<?= $tanggal_lahir ?> ');
+    $("#no_hp_wanita").val('<?= $no_hp ?> ');
+    $("#agama_wanita").val('<?= $agama ?> ');
+    $("#pendidikan_wanita").val('<?= $pendidikan ?> ');
+    $("#hobi_wanita").val('<?= $hobi ?> ');
+    $("#sosmed_wanita").val('<?= $sosmed ?> ');
+    $("#status_wanita").val('<?= $status ?> ');
+</script>
 <div style="float: right">
     <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
 </div>
@@ -7,7 +59,7 @@
     <div class="col-md-6" style="float: left">
         <div class="form-group">
             <!--<label class="control-label">Foto</label>-->
-            <!--<input name="nama_lengkap_pria" id="nama_lengkap_pria" type="file" required="required" class="form-control" placeholder="" />-->
+            <!--<input name="nama_lengkap_wanita" id="nama_lengkap_wanita" type="file" required="required" class="form-control" placeholder="" />-->
             <!--<div class="col-sm-3" style="float: left"></div>-->
             <div class="col-sm-6 imgUp" style="margin: 0 auto;">
                 <div class="imagePreview"></div>
@@ -59,7 +111,7 @@
         </div>
         <div class="form-group">
             <label class="control-label">Hobi Pengantin Wanita</label>
-            <input name="nama_lengkap_pria" id="nama_lengkap_pria" type="text" required="required" class="form-control"  />
+            <input name="nama_lengkap_wanita" id="nama_lengkap_wanita" type="text" required="required" class="form-control"  />
         </div>
         <div class="form-group">
             <label class="control-label">Sosmed Pengantin Wanita</label>

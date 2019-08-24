@@ -9,6 +9,7 @@
     <thead class="thead-light">
         <tr>
             <th>No</th>
+            <th>Kepada</th>
             <th>Tanggal</th>
             <th>Waktu</th>
             <th>Tempat</th>
@@ -17,14 +18,29 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <?php
+        $no = 1;
+        if (!empty($meeting)) {
+            foreach ($meeting as $val) {
+                ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $val->kepada ?></td>
+                    <td><?= $val->tanggal ?></td>
+                    <td><?= $val->waktu ?></td>
+                    <td><?= $val->tempat ?></td>
+                    <td><?= $val->keperluan ?></td>
+                    <td>
+                        <a href="<?= base_url() ?>Wedding/meeting/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="<?= base_url() ?>Wedding/meeting/delete?id=<?= $val->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>                    
+                    </td>
+                </tr>
+                <?php
+            }
+        } else {
+            echo "<tr><td colspan='7'>Data Vendor Masih Kosong</td></tr>";
+        }
+        ?>
     </tbody>
 </table>
 
