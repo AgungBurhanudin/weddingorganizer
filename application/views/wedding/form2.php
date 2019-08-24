@@ -41,6 +41,9 @@
                                     <a class="nav-link" data-toggle="tab" href="#wanita" role="tab" aria-controls="wanita">Catin Wanita</a>
                                 </li>
                                 <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#vendor" role="tab" aria-controls="vendor">Daftar Vendor</a>
+                                </li>
+                                <li class="nav-item detail-wedding">
                                     <a class="nav-link" data-toggle="tab" href="#undangan" role="tab" aria-controls="undangan">Daftar Undangan</a>
                                 </li>
                                 <li class="nav-item detail-wedding">
@@ -63,6 +66,9 @@
                                 <div class="tab-pane" id="wanita" role="tabpanel">
                                     <?php $this->load->view('wedding/form_wanita'); ?>
                                 </div>
+                                <div class="tab-pane" id="vendor" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_vendor'); ?>
+                                </div>
                                 <div class="tab-pane" id="undangan" role="tabpanel">
                                     <?php $this->load->view('wedding/form_undangan'); ?>
                                 </div>
@@ -73,6 +79,7 @@
                         </main>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
     </div>

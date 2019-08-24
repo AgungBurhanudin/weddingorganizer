@@ -1,3 +1,6 @@
+<div style="float: right">
+    <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
+</div>
 <h2>Biodata Pengantin Wanita</h2>
 <hr>
 <div>
