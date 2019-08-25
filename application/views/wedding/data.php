@@ -47,35 +47,35 @@
                                             <tr>
                                                 <td class="text-center" nowrap="nowarap">
                                                     <div class="avatar">
-                                                        <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+                                                        <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $d->foto_pria ?>" alt="<?= $d->nama_pria ?>">
                                                     </div>
                                                     <div class="avatar">
-                                                        <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+                                                        <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $d->foto_wanita != "" ? $d->foto_wanita : "user.jpg" ?>" alt="<?= $d->nama_wanita ?>">
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div><?= $d->$pengantin_pria ?> & Zaskia Sungkar</div>
+                                                    <div><?= $d->nama_pria ?> & <?= $d->nama_wanita ?></div>
                                                     <div class="small text-muted">
-                                                        Registered: Jan 1, 2015</div>
+                                                        Registered: <?= $d->registration_date ?></div>
                                                 </td>
                                                 <td>
-                                                    085777777777
+                                                    <?= $d->cp ?>
                                                 </td>
                                                 <td>
-                                                    <div>Salatiga</div>
+                                                    <div><?= $d->tempat ?></div>
                                                     <div class="small text-muted">
-                                                        Jl Osamaliki No 26 Salatiga</div>
+                                                        <?= $d->alamat ?></div>
                                                 </td>
                                                 <td>
                                                     <div class="small text-muted">Married Date</div>
-                                                    <strong>30 Agustus 2019</strong>
+                                                    <strong><?= $d->tanggal ?></strong>
                                                 </td>
                                                 <td>
-                                                    <div class="small text-muted">Last login</div>
-                                                    <strong>10 sec ago</strong>
+                                                    <div class="small text-muted"><?= $d->user_real_name ?> <?= $d->deskripsi ?></div>
+                                                    <strong><?= $d->datetime ?></strong>
                                                 </td>
                                                 <td>
-                                                    <a href="<?= base_url() ?>Wedding/form">
+                                                    <a href="<?= base_url() ?>Wedding/form?id=<?= $d->id ?>">
                                                         <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Detail</button>
                                                     </a>
                                                 </td>

@@ -2,25 +2,21 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Wedding extends CI_Controller
-{
+class Wedding extends CI_Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->model(array('wedding_model'));
-         $this->load->library('form_validation');
+        $this->load->library('form_validation');
         checkToken();
     }
 
-    public function index()
-    {
+    public function index() {
         $data['wedding'] = $this->wedding_model->getDataAll();
         render('wedding/data', $data);
     }
 
-    public function add()
-    {
+    public function add() {
         //        render('wedding/add');
         //        if ($this->input->post('finish')) {
         //            $this->form_validation->set_rules('title', 'Judul', 'trim|required');
@@ -58,8 +54,7 @@ class Wedding extends CI_Controller
         render('wedding/add', $data);
     }
 
-    public function save()
-    {
+    public function save() {
         $wedding = $this->wedding_model;
         $validation = $this->form_validation;
         $validation->set_rules($wedding->rules_wedding());
@@ -68,7 +63,7 @@ class Wedding extends CI_Controller
         $id_wedding = "";
 
         //Insert Data Wedding ke Table wedding
-        if ($validation->run()) {
+        if ($result) {
             $id_wedding = $wedding->insertWedding();
             $result = $result && true;
         }
@@ -82,25 +77,36 @@ class Wedding extends CI_Controller
         }
 
         //Insert Data Wedding ke Table Pengantin
-        $validation->set_rules($wedding->rules_pria());
-        if ($validation->run()) {
+        if ($result) {
             $wedding->insertPria($id_wedding);
             $result = $result && true;
         }
 
         //Insert Data Wedding ke Table Wanita
-        $validation->set_rules($wedding->rules_wanita());
-        if ($validation->run()) {
+        if ($result) {
             $wedding->insertWanita($id_wedding);
             $result = $result && true;
         }
 
 
         //Insert Data Paket ke Table wedding_acara / wedding_panitia / wedding_upacra / wedding_tambahan        
-        $result = $result && $wedding->insertPaketAcara($id_wedding);
-        $result = $result && $wedding->insertPaketUpacara($id_wedding);
-        $result = $result && $wedding->insertPaketPanitia($id_wedding);
-        $result = $result && $wedding->insertPaketTambahan($id_wedding);
+
+        if ($wedding->insertAcara($id_wedding)) {
+            $result = $result && true;
+        }
+        if ($wedding->insertUpacara($id_wedding)) {
+            $result = $result && true;
+        }
+        if ($wedding->insertPanitia($id_wedding)) {
+            $result = $result && true;
+        }
+        if ($wedding->insertTambahan($id_wedding)) {
+            $result = $result && true;
+        }
+//        $result = $result && $wedding->insertAcara($id_wedding);
+//        $result = $result && $wedding->insertUpacara($id_wedding);
+//        $result = $result && $wedding->insertPanitia($id_wedding);
+//        $result = $result && $wedding->insertTambahan($id_wedding);
 
 
         if ($result) {
@@ -120,8 +126,7 @@ class Wedding extends CI_Controller
         }
     }
 
-    public function form()
-    {
+    public function form() {
         $id = $_GET['id'];
         if (empty($id) || $id == "") {
             redirect(base_url() . "Wedding");
@@ -136,9 +141,9 @@ class Wedding extends CI_Controller
             'pria' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'L'")->row(),
             'wanita' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'P'")->row(),
             'vendor' => $this->db->query("SELECT a.*,b.nama_kategori FROM vendor_pengantin a "
-                . "LEFT JOIN kategori_vendor b "
-                . "ON a.id_kategori = b.id "
-                . "WHERE a.id_wedding = '$id'")->result(),
+                    . "LEFT JOIN kategori_vendor b "
+                    . "ON a.id_kategori = b.id "
+                    . "WHERE a.id_wedding = '$id'")->result(),
             'undangan' => $this->db->query("SELECT * FROM undangan WHERE id_wedding = '$id'")->result(),
             'meeting' => $this->db->query("SELECT * FROM jadwal_meeting WHERE id_wedding = '$id'")->result(),
             'log' => $this->db->query("SELECT a.*,b.user_real_name  FROM log_aktivitas a "
@@ -150,9 +155,8 @@ class Wedding extends CI_Controller
         render('wedding/form2', $data);
     }
 
-    public function vendor()
-    {
-        $uri = $this->uri->segment(3);        
+    public function vendor() {
+        $uri = $this->uri->segment(3);
         if ($uri == "add") {
             $return = array(
                 'code' => '200',
@@ -166,19 +170,30 @@ class Wedding extends CI_Controller
         }
     }
 
-    public function meeting()
-    {
+    public function meeting() {
         $uri = $this->uri->segment(3);
         $id = $_GET['id'];
-        if ($uri == "add") { } else if ($uri == "edit") { } else if ($uri == "delete") { }
+        if ($uri == "add") {
+            
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
     }
 
-    public function undangan()
-    {
+    public function undangan() {
         $uri = $this->uri->segment(3);
         $id = $_GET['id'];
-        if ($uri == "add") { } else if ($uri == "edit") { } else if ($uri == "delete") { }
+        if ($uri == "add") {
+            
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
     }
+
 }
 
 /* End of file Wedding.php */

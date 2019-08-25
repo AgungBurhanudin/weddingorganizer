@@ -63,7 +63,7 @@ if (!empty($wedding)) {
 
         <div class="form-group">
             <label class="control-label">Tema Pernikahan</label>
-            <input name="tema_pernikahan" id="tema_pernikahan" type="date" required="required" class="form-control" value="<?= $tema ?>"  />
+            <input name="tema_pernikahan" id="tema_pernikahan" type="text" required="required" class="form-control" value="<?= $tema ?>"  />
         </div>
         <div class="form-group">
             <label class="control-label">Hastag Pernikahan</label>

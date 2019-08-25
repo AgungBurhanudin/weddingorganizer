@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Hobi Pengantin Wanita</label>
-                <input name="nama_lengkap_pria" id="nama_lengkap_pria" type="text" required="required" class="form-control" />
+                <input name="hobi_wanita" id="hobi_wanita" type="text" required="required" class="form-control" />
             </div>
             <div class="form-group">
                 <label class="control-label">Sosmed Pengantin Wanita</label>
