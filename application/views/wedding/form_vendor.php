@@ -59,7 +59,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" >Kategori Vendor </label>
                         <div class="col-md-9">
-                            <select class="form-control" name="kategori_vendor" id="kategori_vendor" onchange="getVendor(this.value)">
+                            <select class="form-control" name="kategori_vendor" id="kategori_vendor" onchange="getVendor(this.value)" style="width: 100%; height: 40px">
                                 <option value="">-- Pilih Tipe Vendor --</option>
                                 <?php
                                 foreach ($kategori_vendor as $kv) {
@@ -134,6 +134,9 @@
     <!-- /.modal-dialog-->
 </div>
 <script>
+    $(function(){
+        $("#kategori_vendor").select2();
+    });
     function getVendor(kategori) {
         $.ajax({
             url: "<?= base_url() ?>Combobox/vendor?kategori=" + kategori,

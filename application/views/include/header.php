@@ -28,6 +28,9 @@
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
 
         <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/sweet/min/jquery.sweet-modal.min.css" />
+        <link rel="stylesheet" href="<?= base_url() ?>assets/css/select2.css" />
+<!--        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" />-->
+
         <script>
 
             window.dataLayer = window.dataLayer || [];
@@ -58,6 +61,8 @@
         <!--<script type="text/javascript" src="<?= base_url() ?>assets/smartWizard/js/jquery.smartWizard.min.js"></script>-->
         
         <script src="<?= base_url() ?>assets/js/jquery.validate.js"></script>
+        <script src="<?= base_url() ?>assets/js/select2.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>-->
         <script>
             //Image preview
             $(function () {
