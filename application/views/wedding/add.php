@@ -46,7 +46,7 @@
                                 </div>
                                 <hr>
                                 <div id="form_daftar_wedding">
-                                    <form method="POST" action="#" id="formWedding" enctype="multipart/form-data">
+                                    <form method="POST" action="#" id="formWedding">
                                         <div class="active_form panel panel-primary setup-content" id="step-1">
                                             <?= $this->load->view('wedding/add_wedding') ?>
                                         </div>
