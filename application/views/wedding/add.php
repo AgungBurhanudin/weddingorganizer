@@ -144,8 +144,13 @@
             processData: false,
             contentType: false,
             data: formData,
+            dataType: "JSON",
             success: function (data) {
-                $("#finish").html(data);
+                if(data.code == "200"){
+                    alert("Berhasil");
+                }else{
+                    alert("Gagal");
+                }
             }
         });
     }

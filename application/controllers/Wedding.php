@@ -51,19 +51,68 @@ class Wedding extends CI_Controller {
             'panitia' => $this->db->query("SELECT * FROM panitia_tipe")->result(),
             'tambahan' => $this->db->query("SELECT * FROM tambahan_tipe")->result()
         );
-        $wedding = $this->wedding_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($wedding->rules());
-        if ($validation->run()) {
-            $wedding->insert();
-            $this->session->set_flashdata('success', 'Berhasil Ditambahkan');
-        }
         render('wedding/add', $data);
     }
 
     public function save() {
-        echo "<pre>";
-        print_r($_FILES);
+        $wedding = $this->wedding_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($wedding->rules_wedding());
+        $result = true;
+        $msg = "";
+        $id_wedding = "";
+
+        //Insert Data Wedding ke Table wedding
+        if ($validation->run()) {
+            $id_wedding = $wedding->insertWedding();
+            $result = $result && true;
+        }
+        if ($id_wedding == "") {
+            $return = array(
+                'code' => 400,
+                'message' => "Gagal Di Tambahkan . " . $msg
+            );
+            echo json_encode($return);
+            exit();
+        }
+
+        //Insert Data Wedding ke Table Pengantin
+        $validation->set_rules($wedding->rules_pria());
+        if ($validation->run()) {
+            $wedding->insertPria($id_wedding);
+            $result = $result && true;
+        }
+
+        //Insert Data Wedding ke Table Wanita
+        $validation->set_rules($wedding->rules_wanita());
+        if ($validation->run()) {
+            $wedding->insertWanita($id_wedding);
+            $result = $result && true;
+        }
+
+
+        //Insert Data Paket ke Table wedding_acara / wedding_panitia / wedding_upacra / wedding_tambahan        
+        $result = $result && $wedding->insertPaketAcara($id_wedding);
+        $result = $result && $wedding->insertPaketUpacara($id_wedding);
+        $result = $result && $wedding->insertPaketPanitia($id_wedding);
+        $result = $result && $wedding->insertPaketTambahan($id_wedding);
+
+
+        if ($result) {
+            $return = array(
+                'code' => 200,
+                'message' => "Berhasil Di Tambahkan"
+            );
+            echo json_encode($return);
+            $this->session->set_flashdata('success', 'Berhasil Ditambahkan');
+        } else {
+            $return = array(
+                'code' => 200,
+                'message' => "Gagal Di Tambahkan . " . $msg
+            );
+            echo json_encode($return);
+            $this->session->set_flashdata('error', 'Berhasil Ditambahkan');
+        }
     }
 
     public function form() {
@@ -72,9 +121,9 @@ class Wedding extends CI_Controller {
             redirect(base_url() . "Wedding");
         }
         $wedding = $this->db->query("SELECT * FROM wedding WHERE id = '$id'")->row();
-        //        if(empty($wedding)){
-        //            redirect(base_url() . "Wedding");
-        //        }
+        if (empty($wedding)) {
+            redirect(base_url() . "Wedding");
+        }
         $data = array(
             'wedding' => $wedding,
             'pria' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'L'")->row(),
