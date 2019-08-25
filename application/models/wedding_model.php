@@ -24,6 +24,7 @@ class Wedding_model extends CI_Model {
     public $penyelenggara;
     public $undangan;
     public $status;
+    public $registration_date;
 
     public function rules_wedding() {
         return [
@@ -84,7 +85,8 @@ class Wedding_model extends CI_Model {
                 FROM pengantin 
                 WHERE gender = 'P' ) c 
               ON c.id_wedding = a.id 
-              LEFT JOIN log_aktivitas d 
+              LEFT JOIN 
+                (SELECT * FROM log_aktivitas ORDER BY datetime DESC)d 
               ON d.id_wedding = a.id 
               LEFT JOIN app_user e 
               ON d.id_user = e.user_id 
@@ -113,6 +115,7 @@ class Wedding_model extends CI_Model {
         $this->penyelenggara = $_POST["penyelenggara"];
         $this->undangan = $_POST["jumlah_undangan"];
         $this->status = 1;
+        $this->registration_date = date('Y-m-d H:i:s');
         $this->db->insert($this->_table, $this);
         return $this->db->insert_id();
     }
@@ -224,11 +227,10 @@ class Wedding_model extends CI_Model {
         $no = 1;
         if (!empty($acara)) {
             foreach ($acara as $val) {
-                
+
                 $data['id_wedding'] = $id_wedding;
                 $data['id_acara_tipe'] = $val;
                 $data['urutan'] = $no++;
-                ;
                 $this->db->insert('wedding_acara', $data);
             }
         }
@@ -241,11 +243,10 @@ class Wedding_model extends CI_Model {
         $no = 1;
         if (!empty($upacara)) {
             foreach ($upacara as $val) {
-                
+
                 $data['id_wedding'] = $id_wedding;
                 $data['id_upacara_tipe'] = $val;
                 $data['urutan'] = $no++;
-                ;
                 $this->db->insert('wedding_upacara', $data);
             }
         }
@@ -258,11 +259,10 @@ class Wedding_model extends CI_Model {
         $no = 1;
         if (!empty($panitia)) {
             foreach ($panitia as $val) {
-                
+
                 $data['id_wedding'] = $id_wedding;
                 $data['id_panitia_tipe'] = $val;
                 $data['urutan'] = $no++;
-                ;
                 $this->db->insert('wedding_panitia', $data);
             }
         }
@@ -275,14 +275,22 @@ class Wedding_model extends CI_Model {
         $no = 1;
         if (!empty($tambahan)) {
             foreach ($tambahan as $val) {
-                
+
                 $data['id_wedding'] = $id_wedding;
                 $data['id_tambahan_tipe'] = $val;
                 $data['urutan'] = $no++;
-                ;
                 $this->db->insert('wedding_tambahan', $data);
             }
         }
+        return true;
+    }
+
+    public function insertLog($id_wedding, $deskripsi) {
+        $data['id_wedding'] = $id_wedding;
+        $data['id_user'] = $_SESSION['user_id'];
+        $data['deskripsi'] = $deskripsi;
+        $data['datetime'] = date('Y-m-d H:i:s');        
+        $this->db->insert('log_aktivitas', $data);
         return true;
     }
 

@@ -71,7 +71,7 @@
                                                     <strong><?= $d->tanggal ?></strong>
                                                 </td>
                                                 <td>
-                                                    <div class="small text-muted"><?= $d->user_real_name ?> <?= $d->deskripsi ?></div>
+                                                    <div class="small text-muted"><?= $d->user_real_name ?> : <?= $d->deskripsi ?></div>
                                                     <strong><?= $d->datetime ?></strong>
                                                 </td>
                                                 <td>

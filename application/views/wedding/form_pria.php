@@ -15,6 +15,13 @@ if (!empty($pria)) {
     $hobi = $pria->hobi;
     $sosmed = $pria->sosmed;
     $status = $pria->status;
+    $photo = $pria->photo;
+    if($photo == ""){
+        $photo = "user.jpg";
+    }
+    if(!file_exists("./files/images/" . $photo)){
+        $photo = "user.jpg";
+    }
 } else {
     $id = "";
     $id_wedding = "";
@@ -31,25 +38,9 @@ if (!empty($pria)) {
     $hobi = "";
     $sosmed = "";
     $status = "";
+    $photo = "user.jpg";
 }
 ?>
-<script>
-    $("#id_pria").val('<?= $id ?> ');
-    $("#id_wedding_pria").val('<?= $id_wedding ?> ');
-    $("#nama_lengkap_pria").val('<?= $nama_lengkap ?> ');
-    $("#nama_panggilan_pria").val('<?= $nama_panggilan ?> ');
-    $("#gender_pria").val('<?= $gender ?> ');
-    $("#alamat_sekarang_pria").val('<?= $alamat_sekarang ?> ');
-    $("#alamat_nikah_pria").val('<?= $alamat_nikah ?> ');
-    $("#tempat_lahir_pria").val('<?= $tempat_lahir ?> ');
-    $("#tanggal_lahir_pria").val('<?= $tanggal_lahir ?> ');
-    $("#no_hp_pria").val('<?= $no_hp ?> ');
-    $("#agama_pria").val('<?= $agama ?> ');
-    $("#pendidikan_pria").val('<?= $pendidikan ?> ');
-    $("#hobi_pria").val('<?= $hobi ?> ');
-    $("#sosmed_pria").val('<?= $sosmed ?> ');
-    $("#status_pria").val('<?= $status ?> ');
-</script>
 <div style="float: right">
     <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
 </div>
@@ -62,7 +53,7 @@ if (!empty($pria)) {
             <!--<input name="nama_lengkap_pria" id="nama_lengkap_pria" type="file" required="required" class="form-control" placeholder="" />-->
             <!--<div class="col-sm-3" style="float: left"></div>-->
             <div class="col-sm-6 imgUp" style="margin: 0 auto;">
-                <div class="imagePreview"></div>
+                <div class="imagePreview" id="photoPria"></div>
                 <label class="btn btn-upload btn-primary">
                     Foto Pengantin Pria
                     <input type="file" name="foto_pria" class="uploadFile img" value="Upload Photo" accept="image/png, image/jpeg, image/gif" style="width: 0px;height: 0px;overflow: hidden;">
@@ -119,3 +110,22 @@ if (!empty($pria)) {
         </div>
     </div>
 </div>
+
+<script>
+    $("#id_pria").val('<?= $id ?>');
+    $("#id_wedding_pria").val('<?= $id_wedding ?>');
+    $("#nama_lengkap_pria").val('<?= $nama_lengkap ?>');
+    $("#nama_panggilan_pria").val('<?= $nama_panggilan ?>');
+    $("#gender_pria").val('<?= $gender ?>');
+    $("#alamat_sekarang_pria").val('<?= $alamat_sekarang ?>');
+    $("#alamat_nikah_pria").val('<?= $alamat_nikah ?>');
+    $("#tempat_lahir_pria").val('<?= $tempat_lahir ?>');
+    $("#tanggal_lahir_pria").val('<?= $tanggal_lahir ?>');
+    $("#no_hp_pria").val('<?= $no_hp ?>');
+    $("#agama_pria").val('<?= $agama ?>');
+    $("#pendidikan_pria").val('<?= $pendidikan ?>');
+    $("#hobi_pria").val('<?= $hobi ?>');
+    $("#sosmed_pria").val('<?= $sosmed ?>');
+    $("#status_pria").val('<?= $status ?>');
+    $("#photoPria").attr('style','background: url(<?= base_url() ."/files/images/" .$photo ?>) no-repeat center center; background-size:cover;');
+</script>
