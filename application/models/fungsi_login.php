@@ -46,5 +46,3 @@ class Fungsi_login extends CI_Model {
     }
 
 }
-
-?>
