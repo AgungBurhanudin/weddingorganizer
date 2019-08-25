@@ -91,5 +91,6 @@
     </div>
 </div>
 <script>
+    $(".id_wedding").val('<?= $id_wedding ?>');
 //    $("#detail_wedding *").attr("disabled", "disabled").off('click');
 </script>

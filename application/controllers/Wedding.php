@@ -121,10 +121,11 @@ class Wedding extends CI_Controller {
             redirect(base_url() . "Wedding");
         }
         $wedding = $this->db->query("SELECT * FROM wedding WHERE id = '$id'")->row();
-        if (empty($wedding)) {
-            redirect(base_url() . "Wedding");
-        }
+//        if (empty($wedding)) {
+//            redirect(base_url() . "Wedding");
+//        }
         $data = array(
+            'id_wedding' => $id,
             'wedding' => $wedding,
             'pria' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'L'")->row(),
             'wanita' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'P'")->row(),
@@ -137,20 +138,25 @@ class Wedding extends CI_Controller {
             'log' => $this->db->query("SELECT a.*,b.user_real_name  FROM log_aktivitas a "
                     . "LEFT JOIN app_user b "
                     . "ON a.id_user = b.user_id "
-                    . "WHERE a.id_wedding = '$id'")->result()
+                    . "WHERE a.id_wedding = '$id'")->result(),
+            'kategori_vendor' => $this->db->get('kategori_vendor')->result(),
         );
         render('wedding/form2', $data);
     }
 
     public function vendor() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
+        
         if ($uri == "add") {
-            
+            $return = array(
+                'code' => '200',
+                'msg' => 'Berhasil menambah vendor'
+            );
+            echo json_encode($return);
         } else if ($uri == "edit") {
-            
+            $id = $_GET['id'];
         } else if ($uri == "delete") {
-            
+            $id = $_GET['id'];
         }
     }
 

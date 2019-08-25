@@ -44,7 +44,7 @@
     </tbody>
 </table>
 
-<div class="modal fade" id="vendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
+<div class="modal fade"  id="vendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,26 +54,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="#" id="formVendor" method="post">
+                    <input type="hidden" class="id_wedding" name="id_wedding">
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">Tipe Vendor </label>
+                        <label class="col-md-3 col-form-label" >Kategori Vendor </label>
                         <div class="col-md-9">
-                            <select class="form-control" name="tipe_undangan" id="tipe_undangan">
+                            <select class="form-control" name="kategori_vendor" id="kategori_vendor" onchange="getVendor(this.value)">
                                 <option value="">-- Pilih Tipe Vendor --</option>
-                                <option value="Teman">Teman</option>
-                                <option value="Keluarga">Keluarga</option>
-                                <option value="VIP">VIP</option>
+                                <?php
+                                foreach ($kategori_vendor as $kv) {
+                                    ?>
+                                    <option value="<?= $kv->id ?>"><?= $kv->nama_kategori ?></option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">Vendor Yang Tersedia </label>
+                        <label class="col-md-3 col-form-label" >Vendor Yang Tersedia </label>
                         <div class="col-md-9">
-                            <select class="form-control" name="tipe_undangan" id="tipe_undangan">
+                            <select class="form-control" name="vendor" id="vendorcombobox">
                                 <option value="">-- Pilih Tipe Vendor --</option>
-                                <option value="Teman">Teman</option>
-                                <option value="Keluarga">Keluarga</option>
-                                <option value="VIP">VIP</option>
                             </select>
                         </div>
                     </div>
@@ -84,31 +86,31 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">Alamat </label>
+                        <label class="col-md-3 col-form-label" >Alamat </label>
                         <div class="col-md-9">
-                            <input name="alamat_undangan" id="alamat_undangan" type="text" required="required" class="form-control"  />                            
+                            <input name="alamat" id="alamat" type="text" required="required" class="form-control"  />                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">CP </label>
+                        <label class="col-md-3 col-form-label" >CP </label>
                         <div class="col-md-9">
                             <input name="cp" id="cp" type="text" required="required" class="form-control"  />                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">No Telepone</label>
+                        <label class="col-md-3 col-form-label" >No Telepone</label>
                         <div class="col-md-9">
                             <input name="nohp" id="nohp" type="text" required="required" class="form-control"  />                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">Biaya</label>
+                        <label class="col-md-3 col-form-label" >Biaya</label>
                         <div class="col-md-9">
                             <input name="biaya" id="biaya" type="number" required="required" class="form-control"  />                            
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password">Di Bayar oleh </label>
+                        <label class="col-md-3 col-form-label" >Di Bayar oleh </label>
                         <div class="col-md-9">
                             <select class="form-control" name="bayar_oleh" id="bayar_oleh">
                                 <option value="">-- Pilih Pembayaran --</option>
@@ -118,10 +120,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="hf-password"></label>
+                        <label class="col-md-3 col-form-label" ></label>
                         <div class="col-md-9">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
-                            <button class="btn btn-primary" type="button">Simpan</button>
+                            <button class="btn btn-primary" type="submit" onclick="simpanVendor()">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -131,3 +133,50 @@
     </div>
     <!-- /.modal-dialog-->
 </div>
+<script>
+    function getVendor(kategori) {
+        $.ajax({
+            url: "<?= base_url() ?>Combobox/vendor?kategori=" + kategori,
+            success: function (data) {
+                $("#vendorcombobox").html(data);
+            }
+        });
+    }
+    function simpanVendor() {
+        var formData = new FormData($("#formVendor")[0]);
+        $('#formVendor').validate({
+            rules: {
+                nama_vendor: {
+                    required: true,
+                    minlength: 2
+                },
+                bayar_oleh: "required"
+            },
+            messages: {
+                nama_vendor: {
+                    required: "Please enter a Nama Vendor",
+                    minlength: "Nama Vendor minimal 2 karakter"
+                },
+                bayar_oleh: "Pilih Pembayaran"
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url() ?>Wedding/vendor/add',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    dataType: "JSON",
+                    success: function (data) {
+                        if (data.code == "200") {
+                            swal("success", "Berhasil menambah vendor!");
+                            $("#vendorModal").modal('hide');
+                        } else {
+                            swal("warning", "Gagal menambah vendor!");
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>

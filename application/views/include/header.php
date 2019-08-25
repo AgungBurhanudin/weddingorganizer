@@ -18,15 +18,16 @@
         <link href="<?= base_url() ?>assets/css/style.min.css" rel="stylesheet">
         <link href="<?= base_url() ?>assets/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
         <!-- Include SmartWizard CSS -->
-        <link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard.min.css" rel="stylesheet" type="text/css" />-->
 
         <!-- Optional SmartWizard theme -->
-        <link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_circles.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_arrows.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_dots.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_circles.min.css" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_arrows.min.css" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?= base_url() ?>assets/smartWizard/css/smart_wizard_theme_dots.min.css" rel="stylesheet" type="text/css" />-->
         <!-- Global site tag (gtag.js) - Google Analytics-->
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
 
+        <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/sweet/min/jquery.sweet-modal.min.css" />
         <script>
 
             window.dataLayer = window.dataLayer || [];
@@ -53,7 +54,10 @@
 <!--        <script src="<?= base_url() ?>assets/vendors/chart.js/dist/Chart.min.js"></script>-->
         <script src="<?= base_url() ?>assets/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
         <!--<script src="<?= base_url() ?>assets/js/main.js"></script>-->
-        <script type="text/javascript" src="<?= base_url() ?>assets/smartWizard/js/jquery.smartWizard.min.js"></script>
+        <script src="<?= base_url() ?>assets/vendors/sweet/min/jquery.sweet-modal.min.js"></script>
+        <!--<script type="text/javascript" src="<?= base_url() ?>assets/smartWizard/js/jquery.smartWizard.min.js"></script>-->
+        
+        <script src="<?= base_url() ?>assets/js/jquery.validate.js"></script>
         <script>
             //Image preview
             $(function () {
@@ -76,6 +80,19 @@
 
                 });
             });
+
+            function swal(tipe, content) {
+                var icon = null;
+                if (tipe == "success") {
+                    icon = $.sweetModal.ICON_SUCCESS;
+                } else if (tipe == "warning") {
+                    icon = $.sweetModal.ICON_WARNING;
+                }
+                $.sweetModal({
+                    content: content,
+                    icon: icon
+                });
+            }
         </script>
         <style>
             .red{
@@ -159,7 +176,7 @@
             {
                 margin-bottom:30px;
             }
-            
+
             /*Form Pendaftaran Wedding*/
             .active_form{
                 display: block;
@@ -168,4 +185,16 @@
                 display: none;
             }
             
+            
+            label .error{
+                font-size: 9px;
+                text-decoration: line-through;
+                color: red;
+                
+            }
+            .error{
+                color: red;
+                border-color: red;
+            }
+
         </style>
