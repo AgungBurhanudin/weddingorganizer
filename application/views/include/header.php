@@ -29,6 +29,7 @@
 
         <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/sweet/min/jquery.sweet-modal.min.css" />
         <link rel="stylesheet" href="<?= base_url() ?>assets/css/select2.css" />
+        <link rel="stylesheet" href="<?= base_url() ?>assets/css/jquery.scrolling-tabs.css" />
 <!--        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" />-->
 
         <script>
@@ -62,6 +63,7 @@
         
         <script src="<?= base_url() ?>assets/js/jquery.validate.js"></script>
         <script src="<?= base_url() ?>assets/js/select2.min.js"></script>
+        <script src="<?= base_url() ?>assets/js/jquery.scrolling-tabs.js"></script>
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>-->
         <script>
             //Image preview

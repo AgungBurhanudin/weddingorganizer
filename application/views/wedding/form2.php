@@ -20,19 +20,19 @@
                         <nav>
                             <center>
                                 <div class="avatar">
-                                    <img class="img-avatar" src="<?= base_url() ?>assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">                              
+                                    <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $pria->photo != "" ? $pria->photo : "user.jpg" ?>" alt="<?= $pria->nama_lengkap ?>">
                                 </div>
                                 <div class="avatar">
-                                    <img class="img-avatar" src="<?= base_url() ?>assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">                              
+                                    <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $wanita->photo != "" ? $wanita->photo : "user.jpg" ?>" alt="<?= $wanita->nama_lengkap ?>">
                                 </div>
                                 <br><br>
-                                <b>2 Hari 23 Jam </b><br>
-                                <b>Waktu Pengisian Data Sudah Habis</b>
+                                <b id="countdown">-- </b><br>
+                                <b></b>
                             </center>
                             <hr>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item detail-wedding">
-                                    <a class="nav-link" data-toggle="tab" href="#wedding" role="tab" aria-controls="wedding">Data Wedding</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#wedding" role="tab" aria-controls="wedding">Data Wedding</a>
                                 </li>
                                 <li class="nav-item detail-wedding">
                                     <a class="nav-link" data-toggle="tab" href="#pria" role="tab" aria-controls="pria">Catin Pria</a>
@@ -48,6 +48,18 @@
                                 </li>
                                 <li class="nav-item detail-wedding">
                                     <a class="nav-link" data-toggle="tab" href="#jadwal" role="tab" aria-controls="jadwal">Jadwal Meeting</a>
+                                </li>
+                                <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#acara" role="tab" aria-controls="acara">Paket Acara</a>
+                                </li>
+                                <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#upacara" role="tab" aria-controls="upacara">Paket Upacara</a>
+                                </li>
+                                <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#panitia" role="tab" aria-controls="panitia">Paket Panitia</a>
+                                </li>
+                                <li class="nav-item detail-wedding">
+                                    <a class="nav-link" data-toggle="tab" href="#tambahan" role="tab" aria-controls="tambahan">Paket Tambahan</a>
                                 </li>
                                 <li class="nav-item detail-wedding">
                                     <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-controls="log">Log Aktivitas</a>
@@ -78,6 +90,18 @@
                                 <div class="tab-pane" id="jadwal" role="tabpanel">
                                     <?php $this->load->view('wedding/jadwal_meeting'); ?>
                                 </div>
+                                <div class="tab-pane" id="acara" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_acara'); ?>
+                                </div>
+                                <div class="tab-pane" id="upacara" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_upacara'); ?>
+                                </div>
+                                <div class="tab-pane" id="panitia" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_panitia'); ?>
+                                </div>
+                                <div class="tab-pane" id="tambahan" role="tabpanel">
+                                    <?php $this->load->view('wedding/form_tambahan'); ?>
+                                </div>
                                 <div class="tab-pane" id="log" role="tabpanel">
                                     <?php $this->load->view('wedding/form_log'); ?>
                                 </div>
@@ -91,6 +115,40 @@
     </div>
 </div>
 <script>
+
+// Set the date we're counting down to
+    var countDownDate = new Date("<?= $wedding->tanggal ?> <?= $wedding->waktu ?>").getTime();
+
+// Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        $("#countdown").html(days + " Hari " + hours + " Jam ");
+//                + minutes + " Menit " + seconds + " Detik ");
+
+        if (distance < 0) {
+            clearInterval(x);
+            $("#countdown").html("Waktu Pengisian Data Sudah Habis");
+            $("#detail_wedding *").attr("disabled", "disabled").off('click');
+        }
+    }, 1000);
+    $(function () {
+//        $('#tabAcara').scrollingTabs();
+//        $('#tabPanitia').scrollingTabs();
+//        $('#tabTambahan').scrollingTabs();
+//        $('#tabUpacara').scrollingTabs();
+    });
     $(".id_wedding").val('<?= $id_wedding ?>');
 //    $("#detail_wedding *").attr("disabled", "disabled").off('click');
 </script>

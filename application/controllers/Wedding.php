@@ -154,6 +154,53 @@ class Wedding extends CI_Controller {
                     . "ON a.id_user = b.user_id "
                     . "WHERE a.id_wedding = '$id'")->result(),
             'kategori_vendor' => $this->db->get('kategori_vendor')->result(),
+            'upacara_parent' => $this->db->query("SELECT
+                                        c.*
+                                FROM
+                                        wedding_upacara a
+                                        LEFT JOIN upacara_tipe b ON a.id_upacara_tipe = b.id 
+                                        LEFT JOIN upacara_tipe c ON b.id_upacara = c.id 
+                                GROUP BY
+                                        b.id_upacara 
+                                ORDER BY
+                                        a.urutan ASC")->result(),
+            'upacara' => $this->db->query("SELECT
+                                a.*,
+                                b.id AS id_field,
+                                b.id_upacara,
+                                b.nama_upacara 
+                        FROM
+                                wedding_upacara a
+                                LEFT JOIN upacara_tipe b ON a.id_upacara_tipe = b.id 
+                        ORDER BY
+                                a.urutan ASC")->result(),
+            'acara' => $this->db->query("SELECT
+                                a.*,
+                                b.id AS id_field,
+                                b.nama_acara 
+                        FROM
+                                wedding_acara a
+                                LEFT JOIN acara_tipe b ON a.id_acara_tipe = b.id 
+                        ORDER BY
+                                a.urutan ASC")->result(),
+            'panitia' => $this->db->query("SELECT
+                                a.*,
+                                b.id AS id_field,
+                                b.nama_panitia 
+                        FROM
+                                wedding_panitia a
+                                LEFT JOIN panitia_tipe b ON a.id_panitia_tipe = b.id 
+                        ORDER BY
+                                a.urutan ASC")->result(),
+            'tambahan' => $this->db->query("SELECT
+                                a.*,
+                                b.id AS id_field,
+                                b.nama_tambahan_paket as nama_tambahan 
+                        FROM
+                                wedding_tambahan a
+                                LEFT JOIN tambahan_tipe b ON a.id_tambahan_tipe = b.id 
+                        ORDER BY
+                                a.urutan ASC")->result()
         );
         render('wedding/form2', $data);
     }
@@ -190,6 +237,81 @@ class Wedding extends CI_Controller {
         $id = $_GET['id'];
         if ($uri == "add") {
             
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
+    }
+
+    public function upacara() {
+        $uri = $this->uri->segment(3);
+        $id = $_GET['id'];
+        if ($uri == "field") {
+            $field = $this->db->query("SELECT * FROM upacara_field "
+                    . "WHERE id_upacara_tipe = '$id' "
+                    . "ORDER BY urutan ASC")->result();
+            $data = array(
+                'field' => $field
+            );
+            $this->load->view('wedding/field_upacara', $data);
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
+    }
+    
+
+    public function acara() {
+        $uri = $this->uri->segment(3);
+        $id = $_GET['id'];
+        if ($uri == "field") {
+            $field = $this->db->query("SELECT * FROM acara_field "
+                    . "WHERE id_acara_tipe = '$id' "
+                    . "ORDER BY urutan ASC")->result();
+            $data = array(
+                'field' => $field
+            );
+            $this->load->view('wedding/field_upacara', $data);
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
+    }
+    
+
+    public function panitia() {
+        $uri = $this->uri->segment(3);
+        $id = $_GET['id'];
+        if ($uri == "field") {
+            $field = $this->db->query("SELECT * FROM panitia_field "
+                    . "WHERE id_panitia_tipe = '$id' "
+                    . "ORDER BY urutan ASC")->result();
+            $data = array(
+                'field' => $field
+            );
+            $this->load->view('wedding/field_upacara', $data);
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
+    }
+    
+
+    public function tambahan() {
+        $uri = $this->uri->segment(3);
+        $id = $_GET['id'];
+        if ($uri == "field") {
+            $field = $this->db->query("SELECT * FROM tambahan_field "
+                    . "WHERE id_tambahan_tipe = '$id' "
+                    . "ORDER BY urutan ASC")->result();
+            $data = array(
+                'field' => $field
+            );
+            $this->load->view('wedding/field_upacara', $data);
         } else if ($uri == "edit") {
             
         } else if ($uri == "delete") {
