@@ -41,7 +41,7 @@ class Wedding_model extends CI_Model {
             ['field' => 'status', 'label' => 'Status', 'rules' => 'required'],
         ];
     }
-    
+
     public function rules_pria() {
         return [
             ['field' => 'title', 'label' => 'Title', 'rules' => 'required'],
@@ -60,7 +60,34 @@ class Wedding_model extends CI_Model {
     }
 
     public function getDataAll() {
-        return $this->db->get($this->_table)->result();
+        // return $this->db->get($this->_table)->result();
+//        $this->db->select('wedding.*', 'pengantin.id_wedding', 'pengantin.lengkap', 'pengantin.nama_panggilan', 'pengantin.alamat_nikah', 'pengantin.gender');
+//        $this->db->join('wedding', 'pengantin.id_wedding = wedding.id');
+        $sql = "SELECT a.*,
+                b.nama_panggilan AS nama_pria, 
+                c.nama_panggilan AS nama_wanita,
+                e.user_real_name,
+                d.datetime,
+                d.deskripsi
+                FROM wedding a   
+              LEFT JOIN 
+                (SELECT id_wedding,nama_lengkap, nama_panggilan, alamat_nikah 
+                FROM pengantin 
+                WHERE gender = 'L' ) b 
+              ON b.id_wedding = a.id 
+              LEFT JOIN 
+                (SELECT id_wedding,nama_lengkap, nama_panggilan, alamat_nikah 
+                FROM pengantin 
+                WHERE gender = 'P' ) c 
+              ON c.id_wedding = a.id 
+              LEFT JOIN log_aktivitas d 
+              ON d.id_wedding = a.id 
+              LEFT JOIN app_user e 
+              ON d.id_user = e.user_id 
+              WHERE a.status = 0
+              ORDER BY a.tanggal DESC";
+        $query = $this->db->query($sql);
+        return $query->result();
     }
 
     public function getData($id) {
@@ -84,31 +111,69 @@ class Wedding_model extends CI_Model {
         $this->undangan = $_POST["undangan"];
         $this->status = $_POST["status"];
         $this->db->insert($this->_table, $this);
-        return $this->db->insert_id();
+        return $this->db->insertWedding();
     }
-    
+
     public function insertPria($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->gender = $_POST["gender"];
+        $this->nama_lengkap = $_POST["nama_lengkap"];
+        $this->nama_panggilan = $_POST['nama_panggilan'];
+        $this->db->insert($this->pengantin, $this);
+        return $this->db->insertPria();
     }
-    
+
     public function insertWanita($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->gender = $_POST["gender"];
+        $this->nama_lengkap = $_POST["nama_lengkap"];
+        $this->nama_panggilan = $_POST['nama_panggilan'];
+        $this->db->insert($this->pengantin, $this);
+        return $this->db->insertWanita();
     }
-    
+
     public function insertAcara($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->id_acara_tipe = $_POST["id_acara_tipe"];
+        $this->urutan = $_POST["urutan"];
+        $this->db->insert($this->wedding_acara, $this);
+        return $this->db->insertAcara();
     }
-        
+
     public function insertUpacara($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->id_upacara_tipe = $_POST["id_upacara_tipe"];
+        $this->urutan = $_POST["urutan"];
+        $this->db->insert($this->wedding_upacara, $this);
+        return $this->db->insertUpacara();
     }
-    
+
     public function insertPanitia($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->id_panitia_tipe = $_POST["id_panitia_tipe"];
+        $this->urutan = $_POST["urutan"];
+        $this->db->insert($this->wedding_panitia, $this);
+        return $this->db->insertPanitia();
     }
-        
+
     public function insertTambahan($id_wedding) {
-        
+        $_POST = $this->input->post();
+        $this->id = $id_wedding;
+        $this->id_wedding = $_POST["id_wedding"];
+        $this->id_tambahan_tipe = $_POST["id_tambahan_tipe"];
+        $this->urutan = $_POST["urutan"];
+        $this->db->insert($this->wedding_tambahan, $this);
+        return $this->db->insertTambahan();
     }
 
     public function update() {

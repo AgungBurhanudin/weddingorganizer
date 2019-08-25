@@ -1,4 +1,3 @@
-
 <main class="main">
     <!-- Breadcrumb-->
     <ol class="breadcrumb">
@@ -34,50 +33,60 @@
                                         <th>CP</th>
                                         <th>Alamat</th>
                                         <th>Waktu Pernikahan</th>
-                                        <th>Aktivitas Terakhir</th>                                        
+                                        <th>Aktivitas Terakhir</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="text-center" nowrap="nowarap">
-                                            <div class="avatar">
-                                                <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">                              
-                                            </div>
-                                            <div class="avatar">
-                                                <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">                              
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>Teuku Wisnu & Zaskia Sungkar</div>
-                                            <div class="small text-muted">
-                                                Registered: Jan 1, 2015</div>
-                                        </td>
-                                        <td>
-                                           085777777777
-                                        </td>
-                                        <td>
-                                            <div>Salatiga</div>
-                                            <div class="small text-muted">
-                                                Jl Osamaliki No 26 Salatiga</div>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Married Date</div>
-                                            <strong>30 Agustus 2019</strong>
-                                        </td>
-                                        <td>
-                                            <div class="small text-muted">Last login</div>
-                                            <strong>10 sec ago</strong>
-                                        </td>
-                                        <td>
-                                        <a href="<?= base_url() ?>Wedding/form">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Detail</button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    if (empty($wedding)) {
+                                        echo "<tr><td colspan='7'>Data Wedding kosong</td></tr>";
+                                    } else {
+                                        foreach ($wedding as $d) {
+                                            ?>
+                                            <tr>
+                                                <td class="text-center" nowrap="nowarap">
+                                                    <div class="avatar">
+                                                        <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+                                                    </div>
+                                                    <div class="avatar">
+                                                        <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div><?= $d->$pengantin_pria ?> & Zaskia Sungkar</div>
+                                                    <div class="small text-muted">
+                                                        Registered: Jan 1, 2015</div>
+                                                </td>
+                                                <td>
+                                                    085777777777
+                                                </td>
+                                                <td>
+                                                    <div>Salatiga</div>
+                                                    <div class="small text-muted">
+                                                        Jl Osamaliki No 26 Salatiga</div>
+                                                </td>
+                                                <td>
+                                                    <div class="small text-muted">Married Date</div>
+                                                    <strong>30 Agustus 2019</strong>
+                                                </td>
+                                                <td>
+                                                    <div class="small text-muted">Last login</div>
+                                                    <strong>10 sec ago</strong>
+                                                </td>
+                                                <td>
+                                                    <a href="<?= base_url() ?>Wedding/form">
+                                                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> Detail</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
-<!--                            <ul class="pagination">
+                            <!--                            <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link" href="#">Prev</a>
                                 </li>
