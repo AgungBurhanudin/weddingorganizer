@@ -70,7 +70,9 @@
                             </ul>
                             <br>
                             <div>
-                                <button type="button" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak Buku Wedding</button><br><br>
+                                <a href="<?= base_url() ?>Wedding/cetak?id=<?= $id_wedding ?>" target="_blank">
+                                    <button type="button" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak Buku Wedding</button><br><br>
+                                </a>
                                 <button type="button" class="btn btn-sm btn-dark"><i class="fa fa-lock"></i> Nonaktifkan User</button>
                             </div>
                         </nav>

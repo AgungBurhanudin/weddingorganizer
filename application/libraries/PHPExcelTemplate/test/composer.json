@@ -1,0 +1,7 @@
+{
+"phpoffice/phpspreadsheet": ">=1.4",
+        "alhimik1986/php-excel-templator": "dev-master",
+        "require": {
+                "alhimik1986/php-excel-templator": "^1.0"
+        }
+}

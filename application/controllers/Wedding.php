@@ -1,26 +1,26 @@
 <?php
 
+        error_reporting(E_ALL);
+        ini_set('display_errors', TRUE);
+        ini_set('display_startup_errors', TRUE);
 defined('BASEPATH') or exit('No direct script access allowed');
+require_once dirname(__FILE__) . '/../libraries/PHPExcelTemplate/samples/Bootstrap.php';
+class Wedding extends CI_Controller {
 
-class Wedding extends CI_Controller
-{
-
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->model(array('wedding_model'));
         $this->load->library('form_validation');
+        $this->PhpExcelTemplator = new alhimik1986\PhpExcelTemplator\PhpExcelTemplator;
         checkToken();
     }
 
-    public function index()
-    {
+    public function index() {
         $data['wedding'] = $this->wedding_model->getDataAll();
         render('wedding/data', $data);
     }
 
-    public function add()
-    {
+    public function add() {
         $data_upacara = $this->db->query("SELECT
 		c1.id,		
                     p.id as parent_id,
@@ -43,8 +43,7 @@ class Wedding extends CI_Controller
         render('wedding/add', $data);
     }
 
-    public function save()
-    {
+    public function save() {
         $wedding = $this->wedding_model;
         $validation = $this->form_validation;
         $validation->set_rules($wedding->rules_wedding());
@@ -114,8 +113,7 @@ class Wedding extends CI_Controller
         }
     }
 
-    public function form()
-    {
+    public function form() {
         $id = $_GET['id'];
         if (empty($id) || $id == "") {
             redirect(base_url() . "Wedding");
@@ -130,9 +128,9 @@ class Wedding extends CI_Controller
             'pria' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'L'")->row(),
             'wanita' => $this->db->query("SELECT * FROM pengantin WHERE id_wedding = '$id' AND gender = 'P'")->row(),
             'vendor' => $this->db->query("SELECT a.*,b.nama_kategori FROM vendor_pengantin a "
-                . "LEFT JOIN kategori_vendor b "
-                . "ON a.id_kategori = b.id "
-                . "WHERE a.id_wedding = '$id'")->result(),
+                    . "LEFT JOIN kategori_vendor b "
+                    . "ON a.id_kategori = b.id "
+                    . "WHERE a.id_wedding = '$id'")->result(),
             'undangan' => $this->db->query("SELECT * FROM undangan WHERE id_wedding = '$id'")->result(),
             'meeting' => $this->db->query("SELECT * FROM jadwal_meeting WHERE id_wedding = '$id'")->result(),
             'log' => $this->db->query("SELECT a.*,b.user_real_name  FROM log_aktivitas a "
@@ -191,8 +189,7 @@ class Wedding extends CI_Controller
         render('wedding/form2', $data);
     }
 
-    public function vendor()
-    {
+    public function vendor() {
         $uri = $this->uri->segment(3);
         $this->db->where('id', $uri);
         if ($uri == "add") {
@@ -208,16 +205,20 @@ class Wedding extends CI_Controller
         }
     }
 
-    public function meeting()
-    {
+    public function meeting() {
         $uri = $this->uri->segment(3);
         $id = $_GET['id'];
         $this->db->where('id', $uri);
-        if ($uri == "add") { } else if ($uri == "edit") { } else if ($uri == "delete") { }
+        if ($uri == "add") {
+            
+        } else if ($uri == "edit") {
+            
+        } else if ($uri == "delete") {
+            
+        }
     }
 
-    public function undangan()
-    {
+    public function undangan() {
         $uri = $this->uri->segment(3);
         if ($uri == "add") {
             
@@ -503,6 +504,59 @@ class Wedding extends CI_Controller
             }
             $this->wedding_model->insertLog($id_wedding, "Mengisi paket tambahan/lampiran");
         }
+    }
+
+    public function cetak() {
+        $id = $_GET['id'];
+        $templateFile = './files/template/template.xlsx';
+        $fileName = './files/output/exported_file.xlsx';
+
+        $params = [
+            '{current_date}' => date('d-m-Y'),
+            '{department}' => 'Sales department',
+            '[date]' => [
+                '01-06-2018',
+                '02-06-2018',
+                '03-06-2018',
+                '04-06-2018',
+                '05-06-2018',
+            ],
+            '[code]' => [
+                '0001543',
+                '0003274',
+                '000726',
+                '0012553',
+                '0008245',
+            ],
+            '[manager]' => [
+                'Adams D.',
+                'Baker A.',
+                'Clark H.',
+                'Davis O.',
+                'Evans P.',
+            ],
+            '[sales_amount]' => [
+                '10 230 $',
+                '45 100 $',
+                '70 500 $',
+                '362 180 $',
+                '5 900 $',
+            ],
+            '[sales_manager]' => [
+                'Nalty A.',
+                'Ochoa S.',
+                'Patel O.',
+            ],
+            '[[hours]]' => [
+                ['01', '02', '03', '04', '05', '06', '07', '08'],
+            ],
+            '[[sales_amount_by_hours]]' => [
+                ['100', '200', '300', '400', '500', '600', '700', '800'],
+                ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000'],
+                ['10000', '20000', '30000', '40000', '50000', '60000', '70000', '80000'],
+            ],
+        ];
+        $this->PhpExcelTemplator->saveToFile($templateFile, $fileName, $params);
     }
 
 }
