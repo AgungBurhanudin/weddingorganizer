@@ -57,17 +57,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="" name="undangan" id="undangan" method="post">
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="hf-email">Nama Lengkap</label>
                         <div class="col-md-9">
-                            <input name="nama_lengkap" id="nama_lengkap" type="text" required="required" class="form-control" placeholder="" />                            
+                            <input name="nama_lengkap" id="nama_lengkap" type="text" required="required" class="form-control" placeholder="" />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="hf-password">Alamat </label>
                         <div class="col-md-9">
-                            <input name="alamat_undangan" id="alamat_undangan" type="text" required="required" class="form-control"  />                            
+                            <input name="alamat_undangan" id="alamat_undangan" type="text" required="required" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -85,7 +85,7 @@
                         <label class="col-md-3 col-form-label" for="hf-password"></label>
                         <div class="col-md-9">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
-                            <button class="btn btn-primary" type="button">Simpan</button>
+                            <button class="btn btn-primary" type="submit" onclick="simpanUndangan()">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -156,6 +156,45 @@
                         } else {
                             $("#uploadUndanganModal").modal('hide');
                             swal("warning", "Gagal mengupload data undangan!");
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>
+</div>
+
+<script>
+    function simpanUndangan() {
+        var formData = new FormData($("#undangan")[0]);
+        $('#undangan').validate({
+            rules: {
+                nama: {
+                    required: true,
+                    minlength: 2
+                },
+            },
+            messages: {
+                nama: {
+                    required: "Please enter a Nama Undangan",
+                    minlength: "Nama Undangan minimal 2 karakter"
+                },
+            },
+            submitHandler: function(form) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url() ?>Wedding/undangan/add',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    dataType: "JSON",
+                    success: function(data) {
+                        if (data.code == "200") {
+                            swal("success", "Berhasil menambah undangan!");
+                            $("#myModal").modal('hide');
+                        } else {
+                            swal("warning", "Gagal menambah undangan!");
                         }
                     }
                 });
