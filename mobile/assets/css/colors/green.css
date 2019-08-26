@@ -1,0 +1,147 @@
+/*==============================================
+[Green color stylesheet green.css]
+
+Author:	SINDEVO.COM - Smart Internet Development
+Template:	Biotic - Mobile Web APP Template
+================================================*/
+
+/*===============================================*/
+/* MAIN COLOR */
+/*===============================================*/	
+a, blockquote span {
+color: #9a9f18;
+}
+a.button_full, a.button_small, .call_button a{
+background-color:#9a9f18; 
+}
+.logo h2{
+color:#393b09;
+}
+h2.page_title{
+border-bottom:3px #9a9f18 solid;
+}
+#loadMore img{
+background-color:#9a9f18;
+}
+#pages_maincontent h3{
+color:#9a9f18;
+}
+.post_date, #loadMore{
+color:#9a9f18;
+}
+.contactform input.form_submit, .loginform input.form_submit, .commentform input.form_submit{ 
+background-color:#839109;
+}
+.ui-page-theme-b .ui-btn.ui-btn-active, html .ui-bar-b .ui-btn.ui-btn-active, html .ui-body-b .ui-btn.ui-btn-active, html body .ui-group-theme-b .ui-btn.ui-btn-active, html head + body .ui-btn.ui-btn-b.ui-btn-active, .ui-page-theme-b .ui-checkbox-on::after, html .ui-bar-b .ui-checkbox-on::after, html .ui-body-b .ui-checkbox-on::after, html body .ui-group-theme-b .ui-checkbox-on::after, .ui-btn.ui-checkbox-on.ui-btn-b::after, .ui-page-theme-b .ui-flipswitch-active, html .ui-bar-b .ui-flipswitch-active, html .ui-body-b .ui-flipswitch-active, html body .ui-group-theme-b .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active, .ui-page-theme-b .ui-slider-track .ui-btn-active, html .ui-bar-b .ui-slider-track .ui-btn-active, html .ui-body-b .ui-slider-track .ui-btn-active, html body .ui-group-theme-b .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-b .ui-btn-active {
+    background-color: #9a9f18;
+    border-color: #9a9f18;
+    color: #FFF;
+    text-shadow: 0px 1px 0px #9a9f18;
+}
+.slide_info{
+color:#cacf3c;
+}
+/* Page and overlay */
+.ui-overlay-a{
+background-color:#fff;
+}
+#homepage,
+#homepage .ui-panel-wrapper {
+	background-color:#9a9f18;
+}
+.secondarypage,
+.secondarypage .ui-panel-wrapper {
+	background-color:#fff;
+}
+/* Navigation Links */
+.main-nav ul li:nth-child(1){
+background-color:#c6cb63;
+}
+.main-nav ul li:nth-child(2){
+background-color:#bdc258;
+}
+.main-nav ul li:nth-child(3){
+background-color:#b1b64d;
+}
+.main-nav ul li:nth-child(4){
+background-color:#a9ae46;
+}
+.main-nav ul li:nth-child(5){
+background-color:#9da23c;
+}
+.main-nav ul li:nth-child(6){
+background-color:#949934;
+}
+.main-nav ul li:nth-child(7){
+background-color:#8c912d;
+}
+.main-nav ul li:nth-child(8){
+background-color:#7d8224;
+}
+.main-nav ul li:nth-child(9){
+background-color:#72771e;
+}
+.main-nav ul li:nth-child(10){
+background-color:#666b18;
+}
+.main-nav ul li:nth-child(11){
+background-color:#5d6214;
+}
+.main-nav ul li:nth-child(12){
+background-color:#4f530f;
+}
+.main-nav ul li:nth-child(13){
+background-color:#42450c;
+}
+.main-nav ul li:nth-child(14){
+background-color:#3a3d0a;
+}
+.main-nav ul li:nth-child(15){
+background-color:#333507;
+}
+.main-nav ul li:nth-child(16){
+background-color:#2e3005;
+}
+.main-nav ul li:nth-child(17){
+background-color:#2b2d04;
+}
+.main-nav ul li:nth-child(18){
+background-color:#242603;
+}
+.main-nav ul li:nth-child(19){
+background-color:#1d1f02;
+}
+.main-nav ul li:nth-child(20){
+background-color:#181901;
+}
+.main-nav ul li a, .main-nav ul li a:visited, .main-nav ul li a:hover{
+color:#fff;
+}
+/* Pages Header BG */
+.ui-bar-b,
+.ui-page-theme-b .ui-bar-inherit,
+html .ui-bar-b .ui-bar-inherit,
+html .ui-body-b .ui-bar-inherit,
+html body .ui-group-theme-b .ui-bar-inherit {
+	background-color: 			#9a9f18 /*{b-bar-background-color}*/;
+	color: 					#393b09 /*{b-bar-color}*/;
+}
+/*===============================================*/
+/* LEFT AND RIGHT SLIDE PANEL */
+/*===============================================*/	
+.ui-body-b,
+.ui-page-theme-b .ui-body-inherit,
+html .ui-bar-b .ui-body-inherit,
+html .ui-body-b .ui-body-inherit,
+html body .ui-group-theme-b .ui-body-inherit,
+html .ui-panel-page-container-b {
+	background-color: 			#5d6214 /*{b-body-background-color}*/;
+	color: 					#fff /*{b-body-color}*/;
+	text-shadow: none;
+}
+.user_details{
+background-color:#7d8224;
+}
+.user-nav ul li{
+border-bottom:1px #777d21 solid;
+}

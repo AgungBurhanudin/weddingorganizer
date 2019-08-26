@@ -1,0 +1,147 @@
+/*==============================================
+[Blue color stylesheet blue.css]
+
+Author:	SINDEVO.COM - Smart Internet Development
+Template:	Biotic - Mobile Web APP Template
+================================================*/
+
+/*===============================================*/
+/* MAIN COLOR */
+/*===============================================*/	
+a, blockquote span {
+color: #2f949a;
+}
+a.button_full, a.button_small, .call_button a{
+background-color:#2f949a; 
+}
+.logo h2{
+color:#06393c;
+}
+h2.page_title{
+border-bottom:3px #2f949a solid;
+}
+#loadMore img{
+background-color:#2f949a;
+}
+#pages_maincontent h3{
+color:#2f949a;
+}
+.post_date, #loadMore{
+color:#2f949a;
+}
+.contactform input.form_submit, .loginform input.form_submit, .commentform input.form_submit{ 
+background-color:#839109;
+}
+.ui-page-theme-b .ui-btn.ui-btn-active, html .ui-bar-b .ui-btn.ui-btn-active, html .ui-body-b .ui-btn.ui-btn-active, html body .ui-group-theme-b .ui-btn.ui-btn-active, html head + body .ui-btn.ui-btn-b.ui-btn-active, .ui-page-theme-b .ui-checkbox-on::after, html .ui-bar-b .ui-checkbox-on::after, html .ui-body-b .ui-checkbox-on::after, html body .ui-group-theme-b .ui-checkbox-on::after, .ui-btn.ui-checkbox-on.ui-btn-b::after, .ui-page-theme-b .ui-flipswitch-active, html .ui-bar-b .ui-flipswitch-active, html .ui-body-b .ui-flipswitch-active, html body .ui-group-theme-b .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active, .ui-page-theme-b .ui-slider-track .ui-btn-active, html .ui-bar-b .ui-slider-track .ui-btn-active, html .ui-body-b .ui-slider-track .ui-btn-active, html body .ui-group-theme-b .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-b .ui-btn-active {
+    background-color: #2f949a;
+    border-color: #2f949a;
+    color: #FFF;
+    text-shadow: 0px 1px 0px #2f949a;
+}
+.slide_info{
+color:#3ebdc5;
+}
+/* Page and overlay */
+.ui-overlay-a{
+background-color:#fff;
+}
+#homepage,
+#homepage .ui-panel-wrapper {
+	background-color:#2f949a;
+}
+.secondarypage,
+.secondarypage .ui-panel-wrapper {
+	background-color:#fff;
+}
+/* Navigation Links */
+.main-nav ul li:nth-child(1){
+background-color:#61c6cc;
+}
+.main-nav ul li:nth-child(2){
+background-color:#59bcc2;
+}
+.main-nav ul li:nth-child(3){
+background-color:#50b5bb;
+}
+.main-nav ul li:nth-child(4){
+background-color:#44a9af;
+}
+.main-nav ul li:nth-child(5){
+background-color:#3da1a7;
+}
+.main-nav ul li:nth-child(6){
+background-color:#37999f;
+}
+.main-nav ul li:nth-child(7){
+background-color:#2f9096;
+}
+.main-nav ul li:nth-child(8){
+background-color:#27858b;
+}
+.main-nav ul li:nth-child(9){
+background-color:#207a80;
+}
+.main-nav ul li:nth-child(10){
+background-color:#1b747a;
+}
+.main-nav ul li:nth-child(11){
+background-color:#176d72;
+}
+.main-nav ul li:nth-child(12){
+background-color:#14656a;
+}
+.main-nav ul li:nth-child(13){
+background-color:#105d62;
+}
+.main-nav ul li:nth-child(14){
+background-color:#0e565b;
+}
+.main-nav ul li:nth-child(15){
+background-color:#0b4f53;
+}
+.main-nav ul li:nth-child(16){
+background-color:#08494d;
+}
+.main-nav ul li:nth-child(17){
+background-color:#064347;
+}
+.main-nav ul li:nth-child(18){
+background-color:#043a3d;
+}
+.main-nav ul li:nth-child(19){
+background-color:#033134;
+}
+.main-nav ul li:nth-child(20){
+background-color:#022628;
+}
+.main-nav ul li a, .main-nav ul li a:visited, .main-nav ul li a:hover{
+color:#fff;
+}
+/* Pages Header BG */
+.ui-bar-b,
+.ui-page-theme-b .ui-bar-inherit,
+html .ui-bar-b .ui-bar-inherit,
+html .ui-body-b .ui-bar-inherit,
+html body .ui-group-theme-b .ui-bar-inherit {
+	background-color: 			#2f949a /*{b-bar-background-color}*/;
+	color: 					#06393c /*{b-bar-color}*/;
+}
+/*===============================================*/
+/* LEFT AND RIGHT SLIDE PANEL */
+/*===============================================*/	
+.ui-body-b,
+.ui-page-theme-b .ui-body-inherit,
+html .ui-bar-b .ui-body-inherit,
+html .ui-body-b .ui-body-inherit,
+html body .ui-group-theme-b .ui-body-inherit,
+html .ui-panel-page-container-b {
+	background-color: 			#227e84 /*{b-body-background-color}*/;
+	color: 					#fff /*{b-body-color}*/;
+	text-shadow: none;
+}
+.user_details{
+background-color:#41b1b8;
+}
+.user-nav ul li{
+border-bottom:1px #2a979e solid;
+}
