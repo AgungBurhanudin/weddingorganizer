@@ -70,7 +70,8 @@
                             </ul>
                             <br>
                             <div>
-                                <button type="button" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak Buku Wedding</button>
+                                <button type="button" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak Buku Wedding</button><br><br>
+                                <button type="button" class="btn btn-sm btn-dark"><i class="fa fa-lock"></i> Nonaktifkan User</button>
                             </div>
                         </nav>
                         <main>

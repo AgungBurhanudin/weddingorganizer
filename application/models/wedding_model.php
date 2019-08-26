@@ -86,7 +86,7 @@ class Wedding_model extends CI_Model {
                 WHERE gender = 'P' ) c 
               ON c.id_wedding = a.id 
               LEFT JOIN 
-                (SELECT * FROM log_aktivitas ORDER BY datetime DESC)d 
+                (SELECT * FROM log_aktivitas GROUP BY id_wedding ORDER BY datetime DESC LIMIT 1) d 
               ON d.id_wedding = a.id 
               LEFT JOIN app_user e 
               ON d.id_user = e.user_id 
@@ -286,8 +286,10 @@ class Wedding_model extends CI_Model {
     }
 
     public function insertLog($id_wedding, $deskripsi) {
+        $_SESSION = $this->session->userdata('auth');
         $data['id_wedding'] = $id_wedding;
-        $data['id_user'] = $_SESSION['user_id'];
+        $data['id_user'] = $_SESSION['noid'];
+        $data['username'] = $_SESSION['username'];
         $data['deskripsi'] = $deskripsi;
         $data['datetime'] = date('Y-m-d H:i:s');        
         $this->db->insert('log_aktivitas', $data);

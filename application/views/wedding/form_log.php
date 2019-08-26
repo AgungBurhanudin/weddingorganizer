@@ -1,7 +1,7 @@
 <h2>Log Aktifitas</h2>
 <hr>
-<table class="table table-responsive-sm table-hover table-outline mb-0">
-    <thead class="thead-light">
+<table class="table table-responsive-sm table-hover table-outline mb-0"id="table-log">
+    <thead class="thead-light " >
         <tr>
             <th>No</th>
             <th>Date Time</th>
@@ -17,7 +17,7 @@
                 ?>
                 <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $val->datetime ?></td>
+                    <td><?= DateToIndo($val->datetime) ?></td>
                     <td><?= $val->deskripsi ?></td>
                     <td><?= $val->user_real_name ?></td>
                 </tr>
@@ -29,3 +29,6 @@
         ?>
     </tbody>
 </table>
+<script>
+    $("#table-log").DataTable();
+</script>

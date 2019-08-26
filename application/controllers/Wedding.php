@@ -152,7 +152,7 @@ class Wedding extends CI_Controller {
             'log' => $this->db->query("SELECT a.*,b.user_real_name  FROM log_aktivitas a "
                     . "LEFT JOIN app_user b "
                     . "ON a.id_user = b.user_id "
-                    . "WHERE a.id_wedding = '$id'")->result(),
+                    . "WHERE a.id_wedding = '$id' ORDER BY datetime DESC")->result(),
             'kategori_vendor' => $this->db->get('kategori_vendor')->result(),
             'upacara_parent' => $this->db->query("SELECT
                                         c.*
@@ -234,13 +234,117 @@ class Wedding extends CI_Controller {
 
     public function undangan() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
         if ($uri == "add") {
             
         } else if ($uri == "edit") {
             
         } else if ($uri == "delete") {
             
+        } else if ($uri == "upload") {
+            $this->uploadUndangan();
+        } else if ($uri == "barcode") {
+            $this->barcodeUndangan();
+        }
+    }
+
+    public function uploadUndangan() {
+
+//        require_once base_url() . '/application/libraries/Excel/reader.php';
+        $this->load->library('Excel/Spreadsheet_Excel_Reader');
+        $id_wedding = $_POST['id_wedding_upload_undangan'];
+        if (isset($_FILES['files']) && $_FILES['files']['size'] > 0) {
+            $result = true;
+            $data = new Spreadsheet_Excel_Reader();
+            $data->setOutputEncoding('CP1251');
+            $typeFile = $_FILES['files']['type'];
+            $data->read($_FILES['files']['tmp_name']);
+
+            $listSiswa = array();
+            $message = array();
+            $validFormat = false;
+            foreach ($data->sheets[0]['cells'] as $i => $val) {
+                if (trim($val[1]) == "") {
+                    // nothing to do
+                } else if (strtoupper(trim($val[1])) == "NO") {
+                    if (strtoupper(trim($val[1])) == "NO" &&
+                            strtoupper(trim($val[2])) == "NAMA" &&
+                            strtoupper(trim($val[3])) == "ALAMAT" &&
+                            strtoupper(trim($val[4])) == "TIPE") {
+                        $validFormat = true;
+                    } else {
+                        $msg .= "";
+                        break;
+                    }
+                } else if ($validFormat == true) {
+                    $validData = true;
+                    if (!isset($val[2])) {
+                        $validData = false;
+                    } else {
+                        $nama_lengkap = trim($val[2]);
+                    }
+
+                    if (!isset($val[3])) {
+                        $validData = false;
+                    } else {
+                        $alamat = trim($val[3]);
+                    }
+
+                    if (!isset($val[4])) {
+                        $tipe = "";
+                    } else {
+                        $tipe = trim($val[4]);
+                    }
+
+                    $data = array(
+                        'nama' => $nama_lengkap,
+                        'alamat' => $alamat,
+                        'tipe_undangan' => $tipe,
+                        'id_wedding' => $id_wedding
+                    );
+                    $this->db->insert('undangan', $data);
+                }
+            }
+            $response = array(
+                'code' => '200',
+                'message' => $message,
+            );
+        } else {
+            $response = array(
+                'code' => '400',
+                'message' => 'Tidak ada file yang di upload atau File yang diupload kosong',
+            );
+        }
+
+        echo json_encode($response);
+    }
+
+    public function barcodeUndangan() {
+        $this->load->library('QRCode/QRCodeLib');
+        $qr_lib = new QRCodeLib();
+        $qr_name = '';
+        $new_qr = '';
+        $id_wedding = $_GET['id'];
+        $undangan = $this->db->query("SELECT * FROM undangan WHERE id_wedding = '$id_wedding'")->result();
+        foreach ($undangan as $val) {
+            $barcode = $val->barcode;
+            if ($val->barcode == "") {
+                $qr_lib->setFileName($val->id . "QR_Code" . date('Y-m-d_H_i_s') . ".png");
+                if ($qr_lib->generateImage($val->id)) {
+                    echo 1 . "<br>";
+                    $key['id'] = $val->id;
+                    $data['barcode'] = $qr_lib->getFileName();
+                    $barcode = $qr_lib->getFileName();
+                    $this->db->update('undangan', $data, $key);
+                }
+            }
+            echo "<table style='float:left' border='1' cellpading=0 cellspacing=0><tr><td>";
+            echo "<img src='" . base_url() . "/files/qrcode/" . $barcode . "' width='140px'>";
+            echo "</td></tr>";
+            echo "<tr><td align='center'>";
+            echo $val->nama;
+            echo "</td></tr>";
+            echo "</table>";
+            echo "<script>window.print()</script>";
         }
     }
 
@@ -261,10 +365,10 @@ class Wedding extends CI_Controller {
             $id_wedding = $_POST['id_wedding'];
             $id_acara = $_POST['id'];
             $value = $_POST['value'];
-            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+            if (isset($_POST['type']) && $_POST['type'] == "addabletext") {
                 $value = json_encode($_POST[$value]);
             }
-            
+
             $cek = $this->db->query("SELECT * FROM upacara_data WHERE id_wedding = '$id_wedding' AND id_upacara_field = '$id_acara'")->result();
             if (count($cek) > 0) {
                 $key = array(
@@ -283,7 +387,8 @@ class Wedding extends CI_Controller {
                 );
                 $this->db->insert('upacara_data', $data);
             }
-        } 
+            $this->wedding_model->insertLog($id_wedding, "Mengisi paket upacara");
+        }
     }
 
     public function acara() {
@@ -303,8 +408,8 @@ class Wedding extends CI_Controller {
         } else if ($uri == "add") {
             $id_wedding = $_POST['id_wedding'];
             $id_acara = $_POST['id'];
-            $value = $_POST['value'];            
-            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+            $value = $_POST['value'];
+            if (isset($_POST['type']) && $_POST['type'] == "addabletext") {
                 $value = json_encode($_POST[$value]);
             }
             $cek = $this->db->query("SELECT * FROM acara_data WHERE id_wedding = '$id_wedding' AND id_acara_field = '$id_acara'")->result();
@@ -325,7 +430,8 @@ class Wedding extends CI_Controller {
                 );
                 $this->db->insert('acara_data', $data);
             }
-        } 
+            $this->wedding_model->insertLog($id_wedding, "Mengisi paket acara");
+        }
     }
 
     public function panitia() {
@@ -345,8 +451,8 @@ class Wedding extends CI_Controller {
         } else if ($uri == "add") {
             $id_wedding = $_POST['id_wedding'];
             $id_acara = $_POST['id'];
-            $value = $_POST['value'];            
-            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+            $value = $_POST['value'];
+            if (isset($_POST['type']) && $_POST['type'] == "addabletext") {
                 $value = json_encode($_POST[$value]);
             }
             $cek = $this->db->query("SELECT * FROM panitia_data WHERE id_wedding = '$id_wedding' AND id_panitia_field = '$id_acara'")->result();
@@ -367,7 +473,8 @@ class Wedding extends CI_Controller {
                 );
                 $this->db->insert('panitia_data', $data);
             }
-        } 
+            $this->wedding_model->insertLog($id_wedding, "Mengisi panitia");
+        }
     }
 
     public function tambahan() {
@@ -387,8 +494,8 @@ class Wedding extends CI_Controller {
         } else if ($uri == "add") {
             $id_wedding = $_POST['id_wedding'];
             $id_acara = $_POST['id'];
-            $value = $_POST['value'];            
-            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+            $value = $_POST['value'];
+            if (isset($_POST['type']) && $_POST['type'] == "addabletext") {
                 $value = json_encode($_POST[$value]);
             }
             $cek = $this->db->query("SELECT * FROM tambahan_data WHERE id_wedding = '$id_wedding' AND id_tambahan_field = '$id_acara'")->result();
@@ -409,7 +516,8 @@ class Wedding extends CI_Controller {
                 );
                 $this->db->insert('tambahan_data', $data);
             }
-        } 
+            $this->wedding_model->insertLog($id_wedding, "Mengisi paket tambahan/lampiran");
+        }
     }
 
 }

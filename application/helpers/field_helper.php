@@ -18,7 +18,7 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
     switch ($type) {
         case 'text':
             $size_field = !empty($ukuran) ? $ukuran : 100;
-            $field_input = '<input name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form-control" value="' . $value . '" size="' . $size_field . '" ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form-control" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" size="' . $size_field . '" ' . $tagWajib . ' />' . $tagBintang;
             break;
         case 'textarea':
             $field_size = '';
@@ -42,7 +42,7 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
             }
 
             $field_input = '
-        		<select class="form-control" name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '"  ' . $tagWajib . ' >
+        		<select onchange="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '"  ' . $tagWajib . ' >
         			<option value="">-- Pilih --</option>
         			' . $field_option . '
         		</select>
@@ -57,43 +57,61 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
         case 'angka':
             $value = $value != "" ? number_format($value, 2) : 0;
             $size_field = !empty($ukuran) ? $ukuran : 15;
-            $field_input = '<input style="text-align:right;" class="form-control" type="number" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input style="text-align:right;" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" type="number" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
 
             break;
         case 'tanggal':
-            $field_input = '<input type="date" class="form-control" data-force="true" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="35"  ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input type="date" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" data-force="true" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="35"  ' . $tagWajib . ' />' . $tagBintang;
 
             break;
         case 'checkbox':
-            $field_input = '<br><label><input type="checkbox"  name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" ' . $tagWajib . ' />  ' . $ukuran . $tagBintang . '</label>';
+            $checked = "";
+            if ($ukuran == $value) {
+                $checked = "checked='checked'";
+            }
+            $field_input = '<br><label><input type="checkbox" ' . $checked . ' onchange="save' . $form . '(' . $id . ', ' . "'$nameInputPrefix" . "$id '" . ', ' . "'checkbox'" . ')" value="' . $ukuran . '"  name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" ' . $tagWajib . ' />  ' . $ukuran . $tagBintang . '</label>';
 
             break;
         case 'addabletext':
+            $arr_values = array(array());
+            if (!empty($value)) {
+                $arr_values = json_decode($value);
+            }
+
             $size_field = 100;
             $columns = explode("||", $ukuran);
             $field_input = "<button type='button' onclick='add$nameInputPrefix()'><i class='fa fa-plus'></i></button>"
-                    . "<table class='table'><thead><tr>";
+                    . "<form action='#' id='form$nameInputPrefix'><table class='table'><thead><tr>";
             foreach ($columns as $v) {
                 $field_input .= "<td>$v</td>";
             }
             $field_input .= "<td>Aksi</td>";
-            $field_input .= "</tr></thead><tbody id='add$nameInputPrefix'><tr>";
-            foreach ($columns as $v) {
-                $tag = strtolower(str_replace(array(" ", "/"), array("_", "_"), $v));
-                $field_input .= "<td>";
-                $field_input .= '<input name="' . $nameInputPrefix . "['$tag']" . '" id="' . $nameInputPrefix . $id . '" type="text" class="form-control" value="' . $value . '" size="' . $size_field . '" ' . $tagWajib . ' />' . $tagBintang;
+            $field_input .= "</tr></thead><tbody id='add$nameInputPrefix'>";
+            $index = 0;
+            foreach ($arr_values as $k => $val) {
 
-                $field_input .= "</td>";
+                $field_input .= "<tr>";
+                foreach ($columns as $k => $v) {
+                    $tag = strtolower(str_replace(array(" ", "/"), array("_", "_"), $v));
+                    $isi = isset($val[$k]) ? $val[$k] : "";
+                    $field_input .= "<td>";
+                    $field_input .= '<input value="' . $isi . '" onkeyup="save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ', ' . "'addabletext'" . ')" name=' . $nameInputPrefix . "[$index][]" . ' id=' . $nameInputPrefix . $id . ' type=text class=form-control />';
+
+                    $field_input .= "</td>";
+                }
+                $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'><i class='fa fa-trash'></i></button></td>";
+                $field_input .= "<tr>";
+                $index++;
             }
-            $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'><i class='fa fa-trash'></i></button></td>";
-            $field_input .= "</tr></tbody></table>";
+            $field_input .= "</tbody></table></form>";
             $field_input .= "<script>";
             $field_input .= "function add$nameInputPrefix(){";
+            $field_input .= "var baris = $('#add$nameInputPrefix tr').length;";
             $field_input .= 'var data = "<tr>';
             foreach ($columns as $v) {
                 $tag = strtolower(str_replace(array(" ", "/"), array("_", "_"), $v));
                 $field_input .= "<td>";
-                $field_input .= '<input name=' . $nameInputPrefix . "['$tag']" . ' id=' . $nameInputPrefix . $id . ' type=text class=form-control />';
+                $field_input .= '<input onkeyup=save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ",'addabletext'" . ') name=' . $nameInputPrefix . '["+baris+"][]' . ' id=' . $nameInputPrefix . $id . ' type=text class=form-control />';
 
                 $field_input .= '</td>';
             }
