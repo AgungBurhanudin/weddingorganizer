@@ -246,77 +246,170 @@ class Wedding extends CI_Controller {
 
     public function upacara() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
         if ($uri == "field") {
-            $field = $this->db->query("SELECT * FROM upacara_field "
-                    . "WHERE id_upacara_tipe = '$id' "
-                    . "ORDER BY urutan ASC")->result();
+            $field = $this->db->query("SELECT a.*,b.value FROM upacara_field a "
+                            . "LEFT JOIN upacara_data b ON b.id_upacara_field = a.id "
+                            . "WHERE a.id_upacara_tipe = '$id' "
+                            . "ORDER BY a.urutan ASC")->result();
             $data = array(
-                'field' => $field
+                'field' => $field,
+                'type' => 'upacara'
             );
             $this->load->view('wedding/field_upacara', $data);
-        } else if ($uri == "edit") {
+        } else if ($uri == "add") {
+            $id_wedding = $_POST['id_wedding'];
+            $id_acara = $_POST['id'];
+            $value = $_POST['value'];
+            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+                $value = json_encode($_POST[$value]);
+            }
             
-        } else if ($uri == "delete") {
-            
-        }
+            $cek = $this->db->query("SELECT * FROM upacara_data WHERE id_wedding = '$id_wedding' AND id_upacara_field = '$id_acara'")->result();
+            if (count($cek) > 0) {
+                $key = array(
+                    'id_wedding' => $id_wedding,
+                    'id_upacara_field' => $id_acara
+                );
+                $data = array(
+                    'value' => $value
+                );
+                $this->db->update('upacara_data', $data, $key);
+            } else {
+                $data = array(
+                    'id_wedding' => $id_wedding,
+                    'id_upacara_field' => $id_acara,
+                    'value' => $value
+                );
+                $this->db->insert('upacara_data', $data);
+            }
+        } 
     }
-    
 
     public function acara() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
         if ($uri == "field") {
-            $field = $this->db->query("SELECT * FROM acara_field "
-                    . "WHERE id_acara_tipe = '$id' "
-                    . "ORDER BY urutan ASC")->result();
+            $field = $this->db->query("SELECT a.*,b.value FROM acara_field a "
+                            . "LEFT JOIN acara_data b  "
+                            . "ON a.id = b.id_acara_field "
+                            . "WHERE a.id_acara_tipe = '$id' "
+                            . "ORDER BY a.urutan ASC")->result();
             $data = array(
-                'field' => $field
+                'field' => $field,
+                'type' => 'acara'
             );
             $this->load->view('wedding/field_upacara', $data);
-        } else if ($uri == "edit") {
-            
-        } else if ($uri == "delete") {
-            
-        }
+        } else if ($uri == "add") {
+            $id_wedding = $_POST['id_wedding'];
+            $id_acara = $_POST['id'];
+            $value = $_POST['value'];            
+            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+                $value = json_encode($_POST[$value]);
+            }
+            $cek = $this->db->query("SELECT * FROM acara_data WHERE id_wedding = '$id_wedding' AND id_acara_field = '$id_acara'")->result();
+            if (count($cek) > 0) {
+                $key = array(
+                    'id_wedding' => $id_wedding,
+                    'id_acara_field' => $id_acara
+                );
+                $data = array(
+                    'value' => $value
+                );
+                $this->db->update('acara_data', $data, $key);
+            } else {
+                $data = array(
+                    'id_wedding' => $id_wedding,
+                    'id_acara_field' => $id_acara,
+                    'value' => $value
+                );
+                $this->db->insert('acara_data', $data);
+            }
+        } 
     }
-    
 
     public function panitia() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
         if ($uri == "field") {
-            $field = $this->db->query("SELECT * FROM panitia_field "
-                    . "WHERE id_panitia_tipe = '$id' "
-                    . "ORDER BY urutan ASC")->result();
+            $field = $this->db->query("SELECT a.*,b.value FROM panitia_field a "
+                            . "LEFT JOIN panitia_data b  "
+                            . "ON a.id = b.id_panitia_field "
+                            . "WHERE a.id_panitia_tipe = '$id' "
+                            . "ORDER BY a.urutan ASC")->result();
             $data = array(
-                'field' => $field
+                'field' => $field,
+                'type' => 'panitia'
             );
             $this->load->view('wedding/field_upacara', $data);
-        } else if ($uri == "edit") {
-            
-        } else if ($uri == "delete") {
-            
-        }
+        } else if ($uri == "add") {
+            $id_wedding = $_POST['id_wedding'];
+            $id_acara = $_POST['id'];
+            $value = $_POST['value'];            
+            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+                $value = json_encode($_POST[$value]);
+            }
+            $cek = $this->db->query("SELECT * FROM panitia_data WHERE id_wedding = '$id_wedding' AND id_panitia_field = '$id_acara'")->result();
+            if (count($cek) > 0) {
+                $key = array(
+                    'id_wedding' => $id_wedding,
+                    'id_panitia_field' => $id_acara
+                );
+                $data = array(
+                    'value' => $value
+                );
+                $this->db->update('panitia_data', $data, $key);
+            } else {
+                $data = array(
+                    'id_wedding' => $id_wedding,
+                    'id_panitia_field' => $id_acara,
+                    'value' => $value
+                );
+                $this->db->insert('panitia_data', $data);
+            }
+        } 
     }
-    
 
     public function tambahan() {
         $uri = $this->uri->segment(3);
-        $id = $_GET['id'];
+        $id = isset($_GET['id']) ? $_GET['id'] : "";
         if ($uri == "field") {
-            $field = $this->db->query("SELECT * FROM tambahan_field "
-                    . "WHERE id_tambahan_tipe = '$id' "
-                    . "ORDER BY urutan ASC")->result();
+            $field = $this->db->query("SELECT a.*,b.value FROM tambahan_field a "
+                            . "LEFT JOIN tambahan_data b  "
+                            . "ON a.id = b.id_tambahan_field "
+                            . "WHERE id_tambahan_tipe = '$id' "
+                            . "ORDER BY urutan ASC")->result();
             $data = array(
-                'field' => $field
+                'field' => $field,
+                'type' => 'tambahan'
             );
             $this->load->view('wedding/field_upacara', $data);
-        } else if ($uri == "edit") {
-            
-        } else if ($uri == "delete") {
-            
-        }
+        } else if ($uri == "add") {
+            $id_wedding = $_POST['id_wedding'];
+            $id_acara = $_POST['id'];
+            $value = $_POST['value'];            
+            if(isset($_POST['type']) && $_POST['type'] == "addabletext"){
+                $value = json_encode($_POST[$value]);
+            }
+            $cek = $this->db->query("SELECT * FROM tambahan_data WHERE id_wedding = '$id_wedding' AND id_tambahan_field = '$id_acara'")->result();
+            if (count($cek) > 0) {
+                $key = array(
+                    'id_wedding' => $id_wedding,
+                    'id_tambahan_field' => $id_acara
+                );
+                $data = array(
+                    'value' => $value
+                );
+                $this->db->update('tambahan_data', $data, $key);
+            } else {
+                $data = array(
+                    'id_wedding' => $id_wedding,
+                    'id_tambahan_field' => $id_acara,
+                    'value' => $value
+                );
+                $this->db->insert('tambahan_data', $data);
+            }
+        } 
     }
 
 }

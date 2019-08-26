@@ -4,13 +4,13 @@ if (!empty($field)) {
         $id = $val->id;
         $label = $val->nama_label;
         $nama_field = $val->nama_field;
-        $value = '';
+        $value = isset($val->value) ? $val->value : "";
         $name = '';
-        $type = $val->type;
+        $type_field = $val->type;
         $ukuran = $val->ukuran;
         $is_wajib = $val->wajib;
-        $nameInputPrefix = $nama_field;
-        $form = Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib);
+        $nameInputPrefix = str_replace("?", "", $nama_field);
+        $form = Form($nameInputPrefix, $id, $name, $value, $type_field, $ukuran, $is_wajib, $type);
         ?>
         <div class="form-group">
             <label class="control-label"><?= $label ?></label>
@@ -19,5 +19,4 @@ if (!empty($field)) {
         <?php
     }
 }
-
 ?>
