@@ -21,21 +21,6 @@ class Wedding extends CI_Controller
 
     public function add()
     {
-        //        render('wedding/add');
-        //        if ($this->input->post('finish')) {
-        //            $this->form_validation->set_rules('title', 'Judul', 'trim|required');
-        //            $this->form_validation->set_rules('pengantin_pria', 'Pengantin Pria', 'trim|required');
-        //            $this->form_validation->set_rules('pengantin_wanita', 'Pengantin Wanita', 'trim|required');
-        //            $this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
-        //            $this->form_validation->set_rules('waktu', 'Waktu', 'trim|required');
-        //            $this->form_validation->set_rules('tempat', 'Tempat', 'trim|required');
-        //            $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-        //            $this->form_validation->set_rules('tema', 'Tema', 'trim|required');
-        //            $this->form_validation->set_rules('hashtag', 'Hashtag', 'trim|required');
-        //            $this->form_validation->set_rules('penyelenggara', 'Penyelenggara', 'trim|required');
-        //            $this->form_validation->set_rules('undangan', 'Undangan', 'trim|required');
-        //            $this->form_validation->set_rules('status', 'Status', 'trim|required');
-        //        }
         $data_upacara = $this->db->query("SELECT
 		c1.id,		
                     p.id as parent_id,
@@ -111,11 +96,6 @@ class Wedding extends CI_Controller
         if ($wedding->insertLog($id_wedding, 'Registrasi')) {
             $result = $result && true;
         }
-        //        $result = $result && $wedding->insertAcara($id_wedding);
-        //        $result = $result && $wedding->insertUpacara($id_wedding);
-        //        $result = $result && $wedding->insertPanitia($id_wedding);
-        //        $result = $result && $wedding->insertTambahan($id_wedding);
-
 
         if ($result) {
             $return = array(

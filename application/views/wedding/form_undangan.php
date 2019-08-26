@@ -162,10 +162,6 @@
             }
         });
     }
-</script>
-</div>
-
-<script>
     function simpanUndangan() {
         var formData = new FormData($("#undangan")[0]);
         $('#undangan').validate({
@@ -181,7 +177,7 @@
                     minlength: "Nama Undangan minimal 2 karakter"
                 },
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 $.ajax({
                     type: 'POST',
                     url: '<?= base_url() ?>Wedding/undangan/add',
@@ -189,7 +185,7 @@
                     contentType: false,
                     data: formData,
                     dataType: "JSON",
-                    success: function(data) {
+                    success: function (data) {
                         if (data.code == "200") {
                             swal("success", "Berhasil menambah undangan!");
                             $("#myModal").modal('hide');

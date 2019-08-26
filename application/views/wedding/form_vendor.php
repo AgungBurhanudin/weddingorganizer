@@ -23,19 +23,19 @@
         if (!empty($vendor)) {
             foreach ($vendor as $val) {
                 ?>
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $val->nama_vendor ?></td>
-            <td><?= $val->cp ?></td>
-            <td><?= $val->nohp_cp ?></td>
-            <td><?= $val->kategori_nama ?></td>
-            <td><?= $val->biayan ?></td>
-            <td>
-                <a href="<?= base_url() ?>Wedding/vendor/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="<?= base_url() ?>Wedding/vendor/delete?id=<?= $val->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
-            </td>
-        </tr>
-        <?php
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $val->nama_vendor ?></td>
+                    <td><?= $val->cp ?></td>
+                    <td><?= $val->nohp_cp ?></td>
+                    <td><?= $val->kategori_nama ?></td>
+                    <td><?= $val->biaya ?></td>
+                    <td>
+                        <a href="<?= base_url() ?>Wedding/vendor/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="<?= base_url() ?>Wedding/vendor/delete?id=<?= $val->id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+                <?php
             }
         } else {
             echo "<tr><td colspan='7'>Data Vendor Masih Kosong</td></tr>";
@@ -64,8 +64,8 @@
                                 <?php
                                 foreach ($kategori_vendor as $kv) {
                                     ?>
-                                <option value="<?= $kv->id ?>"><?= $kv->nama_kategori ?></option>
-                                <?php
+                                    <option value="<?= $kv->id ?>"><?= $kv->nama_kategori ?></option>
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -76,7 +76,7 @@
                         <div class="col-md-9">
                             <select class="form-control" name="vendor" id="vendorcombobox" onchange=getVendor(this.value)">
                                 <option value=""><?php foreach ($vendor as $v) { ?>
-                                <option value="<?= $v->id ?>"><?= $v->vendor ?></option> <?php } ?></option>
+                                    <option value="<?= $v->id ?>"><?= $v->vendor ?></option> <?php } ?></option>
                             </select>
                         </div>
                     </div>
@@ -135,14 +135,14 @@
     <!-- /.modal-dialog-->
 </div>
 <script>
-    $(function() {
+    $(function () {
         $("#kategori_vendor").select2();
     });
 
     function getVendor(kategori) {
         $.ajax({
             url: "<?= base_url() ?>Combobox/vendor?kategori=" + kategori,
-            success: function(data) {
+            success: function (data) {
                 $("#vendorcombobox").html(data);
             }
         });
@@ -165,7 +165,7 @@
                 },
                 bayar_oleh: "Pilih Pembayaran"
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 $.ajax({
                     type: 'POST',
                     url: '<?= base_url() ?>Wedding/vendor/add',
@@ -173,7 +173,7 @@
                     contentType: false,
                     data: formData,
                     dataType: "JSON",
-                    success: function(data) {
+                    success: function (data) {
                         if (data.code == "200") {
                             swal("success", "Berhasil menambah vendor!");
                             $("#vendorModal").modal('hide');

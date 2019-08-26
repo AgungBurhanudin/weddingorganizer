@@ -206,7 +206,7 @@
                 var val = "";
                 if ($("#" + value).is(":checked")) {
                     val = $("#" + value).val();
-                } 
+                }
                 dataForm = "id=" + id + "&value=" + val + "&id_wedding=" + id_wedding;
                 $.ajax({
                     url: "<?= base_url() ?>Wedding/upacara/add",
