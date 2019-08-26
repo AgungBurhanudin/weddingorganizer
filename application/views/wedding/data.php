@@ -56,7 +56,7 @@
                                                 <td>
                                                     <div><?= $d->nama_pria ?> & <?= $d->nama_wanita ?></div>
                                                     <div class="small text-muted">
-                                                        Registered: <?= $d->registration_date ?></div>
+                                                        Registered: <?= $d->registration_date != "" ? DateToIndo($d->registration_date) : ""; ?></div>
                                                 </td>
                                                 <td>
                                                     <?= $d->cp ?>
@@ -68,11 +68,11 @@
                                                 </td>
                                                 <td>
                                                     <div class="small text-muted">Married Date</div>
-                                                    <strong><?= $d->tanggal ?></strong>
+                                                    <strong><?= $d->tanggal != ""? DateToIndo($d->tanggal) : ""; ?></strong>
                                                 </td>
                                                 <td>
                                                     <div class="small text-muted"><?= $d->user_real_name ?> : <?= $d->deskripsi ?></div>
-                                                    <strong><?= $d->datetime ?></strong>
+                                                    <strong><?= $d->datetime != "" ? DateToIndo($d->datetime) : ""; ?></strong>
                                                 </td>
                                                 <td>
                                                     <a href="<?= base_url() ?>Wedding/form?id=<?= $d->id ?>">
