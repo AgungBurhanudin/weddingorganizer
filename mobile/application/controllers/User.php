@@ -4,8 +4,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
+    public $auth;
+    public $group;
+    public $id_company;
+    public $id_wedding;
+    public $id_user;
+
     public function __construct() {
         parent::__construct();
+        $this->load->model(array('wedding_model'));
+        $this->auth = $this->session->userdata('auth');
+        $this->group = $this->auth['group'];
+        $this->id_company = $this->auth['company'];
+        $this->id_wedding = $this->auth['id_wedding'];
+        $this->id_user = $this->auth['noid'];
         checkToken();
     }
 
@@ -29,11 +41,11 @@ class User extends CI_Controller {
         $post = $_POST;
         $id = $this->input->post("id");
 
-        $data['user_group_id'] = $post['user_group'];
-        $data['user_company'] = $post['user_company'];
+//        $data['user_group_id'] = $post['user_group'];
+//        $data['user_company'] = $post['user_company'];
         $data['user_real_name'] = $post['user_real_name'];
         $data['user_user_name'] = $post['user_user_name'];
-        $data['user_password'] = md5($post['password']);
+//        $data['user_password'] = md5($post['password']);
         $data['user_phone'] = $post['user_phone'];
         $data['user_email'] = $post['user_email'];
         $data['user_address'] = $post['user_address'];
@@ -77,17 +89,37 @@ class User extends CI_Controller {
             $msg = "Berhasil merubah user";
         }
         $this->session->set_flashdata('success', $msg);
-        redirect(base_url() . 'User', 'refresh');
+        redirect(base_url() . 'User/edit');
+    }
+
+    public function savePassword() {
+        $post = $_POST;
+        $id = $this->input->post("id");
+        $data['user_password'] = md5($post['password']);
+        $key['user_id'] = $id;
+        $this->db->update("app_user", $data, $key);
+        $this->session->set_flashdata('success', $msg);
+        redirect(base_url() . 'User/edit');
     }
 
     public function edit() {
-        $key['user_id'] = $this->input->get("id");
+        $key['user_id'] = $this->id_user;
         $data = array(
             'data_user' => $this->db->get_where("app_user", $key)->result(),
             'data_company' => $this->db->get('company')->result(),
             'app_group' => $this->db->get('app_group')->result(),
         );
         render("user/form", $data);
+    }
+
+    public function password() {
+        $key['user_id'] = $this->id_user;
+        $data = array(
+            'data_user' => $this->db->get_where("app_user", $key)->result(),
+            'data_company' => $this->db->get('company')->result(),
+            'app_group' => $this->db->get('app_group')->result(),
+        );
+        render("user/password", $data);
     }
 
     public function delete() {

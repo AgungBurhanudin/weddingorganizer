@@ -9,14 +9,24 @@
             <table class="table table-bordered" style="width: 100%; ">
                 <thead>
                     <tr>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>No</td>
+                        <td width="10%">No</td>
+                        <td>Vendor</td>
+                        <td width="30%">Biaya</td>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

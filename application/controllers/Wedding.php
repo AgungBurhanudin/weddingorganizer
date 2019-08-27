@@ -92,6 +92,9 @@ class Wedding extends CI_Controller {
         if ($wedding->insertTambahan($id_wedding)) {
             $result = $result && true;
         }
+        if ($wedding->insertUser($id_wedding)) {
+            $result = $result && true;
+        }
         if ($wedding->insertLog($id_wedding, 'Registrasi')) {
             $result = $result && true;
         }

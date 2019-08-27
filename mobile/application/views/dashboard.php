@@ -5,12 +5,12 @@
         <div class="featured_image">
             <img src="<?= base_url() ?>assets/images/back.jpg" alt="" title=""> 
         </div>
-        <div class="labelCountDown">43 Hari 20 Jam</div>
+        <div class="labelCountDown" id="countdownLabel">-- Hari -- Jam</div>
         <!--        <div class="heart">
                     
                 </div>-->
         <div id="countdown">
-            Teuku Wisnu <br> Zaskia Sungkar
+            <?= $wedding->nama_pria ?> <br> <?= $wedding->nama_wanita ?>
         </div>
         <div style="clear: both"></div>
         <div class="page_content" style="margin-top: -90px"> 
@@ -76,7 +76,7 @@
             <hr>
             <h3>Aktivitas Terakhir</h3>
             <ul class="features_list">
-                <li><a href="photos.html" data-transition="slidefade" class="ui-link"><span> > User merubah Biodata</span></a></li>
+                <li><a href="photos.html" data-transition="slidefade" class="ui-link"><span> > <?= $wedding->user_real_name ?> <?= $wedding->deskripsi ?></span></a></li>
             </ul>
             <!--            <ul class="features_list_detailed">
             
@@ -158,3 +158,39 @@
     </div>
 
 </div><!-- /content -->
+<script>
+
+// Set the date we're counting down to
+    var countDownDate = new Date("<?= $wedding->tanggal ?> <?= $wedding->waktu ?>").getTime();
+
+// Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            $("#countdownLabel").html(days + " Hari " + hours + " Jam ");
+//                + minutes + " Menit " + seconds + " Detik ");
+
+            if (distance < 0) {
+                clearInterval(x);
+                $("#countdownLabel").html("Waktu Pengisian Data Sudah Habis");
+                $("#detail_wedding *").attr("disabled", "disabled").off('click');
+            }
+        }, 1000);
+        $(function () {
+//        $('#tabAcara').scrollingTabs();
+//        $('#tabPanitia').scrollingTabs();
+//        $('#tabTambahan').scrollingTabs();
+//        $('#tabUpacara').scrollingTabs();
+        });
+</script>

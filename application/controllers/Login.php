@@ -35,8 +35,15 @@ class Login extends CI_Controller {
             $email = $arr_cek->user_email;
             $passwd = $arr_cek->user_password;
             $aplikasiid = $arr_cek->appid;
+            $group = $arr_cek->user_group_id;
+            $company = $arr_cek->user_company;
             $aplikasiid_add = $this->browserid . '#' . $aplikasiid;
-
+            if($group != 1 && $group != 35){   
+                $reply['code'] = '401';
+                $reply['message'] = 'Anda tidak punya akses di halaman ini';
+                echo json_encode($reply);
+                exit();
+            }
             if ($passwd == md5($post['password'])) {
                 //login sukses
                 $reply['code'] = '200';
@@ -48,6 +55,8 @@ class Login extends CI_Controller {
                 $reply['auth']['token'] = randomString(20);
                 $reply['auth']['nama'] = $nama;
                 $reply['auth']['appid'] = $aplikasiid_add;
+                $reply['auth']['group'] = $group;
+                $reply['auth']['company'] = $company;
                 // $this->session->session_start();
 
                 $this->session->set_userdata($reply);

@@ -1,8 +1,53 @@
-
+<?php
+if (!empty($wanita)) {
+    $id = $wanita->id;
+    $id_wedding = $wanita->id_wedding;
+    $nama_lengkap = $wanita->nama_lengkap;
+    $nama_panggilan = $wanita->nama_panggilan;
+    $gender = $wanita->gender;
+    $alamat_sekarang = $wanita->alamat_sekarang;
+    $alamat_nikah = $wanita->alamat_nikah;
+    $tempat_lahir = $wanita->tempat_lahir;
+    $tanggal_lahir = $wanita->tanggal_lahir;
+    $no_hp = $wanita->no_hp;
+    $agama = $wanita->agama;
+    $pendidikan = $wanita->pendidikan;
+    $hobi = $wanita->hobi;
+    $sosmed = $wanita->sosmed;
+    $status = $wanita->status;
+    $photo = $wanita->photo;
+    if($photo == ""){
+        $photo = "user.jpg";
+    }
+    if(!file_exists("./files/images/" . $photo)){
+        $photo = "user.jpg";
+    }
+} else {
+    $id = "";
+    $id_wedding = "";
+    $nama_lengkap = "";
+    $nama_panggilan = "";
+    $gender = "";
+    $alamat_sekarang = "";
+    $alamat_nikah = "";
+    $tempat_lahir = "";
+    $tanggal_lahir = "";
+    $no_hp = "";
+    $agama = "";
+    $pendidikan = "";
+    $hobi = "";
+    $sosmed = "";
+    $status = "";
+    $photo = "user.jpg";
+}
+?>
 <div role="main" class="ui-content">
     <div class="">
         <div class="loginform">
-            <form id="LoginForm" method="post">
+            <form method="POST" action="<?= base_url() ?>Dashboard/saveBiodataWanita" enctype="multipart/form-data">
+                <input type="hidden" class="id_wedding" name="id" value="<?= $id ?>">
+                <input type="hidden" class="id_wedding" name="id_wedding" value="<?= $id_wedding ?>">
+                <input type="hidden" class="id_wedding" name="gender_wanita" value="<?= $gender ?>">
                 Foto Pengantin Wanita
                 <input type="file" name="foto_wanita" class="uploadFile img" value="Upload Photo" accept="image/png, image/jpeg, image/gif" data-role="file"  style="width: 0px;height: 0px;overflow: hidden;">
 
@@ -55,3 +100,22 @@
     </div>
 
 </div>
+
+<script>
+    $("#id_wanita").val('<?= $id ?>');
+    $("#id_wedding_wanita").val('<?= $id_wedding ?>');
+    $("#nama_lengkap_wanita").val('<?= $nama_lengkap ?>');
+    $("#nama_panggilan_wanita").val('<?= $nama_panggilan ?>');
+    $("#gender_wanita").val('<?= $gender ?>');
+    $("#alamat_sekarang_wanita").val('<?= $alamat_sekarang ?>');
+    $("#alamat_nikah_wanita").val('<?= $alamat_nikah ?>');
+    $("#tempat_lahir_wanita").val('<?= $tempat_lahir ?>');
+    $("#tanggal_lahir_wanita").val('<?= $tanggal_lahir ?>');
+    $("#no_hp_wanita").val('<?= $no_hp ?>');
+    $("#agama_wanita").val('<?= $agama ?>');
+    $("#pendidikan_wanita").val('<?= $pendidikan ?>');
+    $("#hobi_wanita").val('<?= $hobi ?>');
+    $("#sosmed_wanita").val('<?= $sosmed ?>');
+    $("#status_wanita").val('<?= $status ?>');
+    $("#photoWanita").attr('style','background: url(<?= base_url() ."/files/images/" .$photo ?>) no-repeat center center; background-size:cover;');
+</script>

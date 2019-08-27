@@ -35,38 +35,52 @@ class Login extends CI_Controller {
             $email = $arr_cek->user_email;
             $passwd = $arr_cek->user_password;
             $aplikasiid = $arr_cek->appid;
+            $group = $arr_cek->user_group_id;
+            $company = $arr_cek->user_company;
+            $id_wedding = $arr_cek->id_wedding;
             $aplikasiid_add = $this->browserid . '#' . $aplikasiid;
-
-            if ($passwd == md5($post['password'])) {
-                //login sukses
-                $reply['code'] = '200';
-                $reply['message'] = 'Sukses Login';
-                $reply['auth']['status'] = 'SUKSESLOGIN';
-                $reply['auth']['message'] = 'Berhasil Login';
-                $reply['auth']['noid'] = $noid;
-                $reply['auth']['username'] = $post['username'];
-                $reply['auth']['token'] = randomString(20);
-                $reply['auth']['nama'] = $nama;
-                $reply['auth']['appid'] = $aplikasiid_add;
-                // $this->session->session_start();
-
-                $this->session->set_userdata($reply);
-                $strSqlUpLogin = "update app_user set user_token = '" . $reply['auth']['token'] . "', last_used = now(), ip = '$this->ip', status = 1,"
-                        . "appid = '$aplikasiid_add', salah_pin = 0 where user_id = '$noid' and user_real_name = '" . $post['username'] . "'";
-
-                $this->db->query($strSqlUpLogin);
-                // redirect(base_url(),'Dashboard');
-            } else {
+            if ($group != 37) {
                 $reply['code'] = '401';
-                $reply['message'] = 'Password tidak sama';
-                // redirect(base_url(),'Login');
+                $reply['message'] = 'Anda tidak punya akses di halaman ini';
+                $this->load->view('login', $reply);
+            } else {
+                if ($passwd == md5($post['password'])) {
+                    //login sukses
+                    $reply['code'] = '200';
+                    $reply['message'] = 'Sukses Login';
+                    $reply['auth']['status'] = 'SUKSESLOGIN';
+                    $reply['auth']['message'] = 'Berhasil Login';
+                    $reply['auth']['noid'] = $noid;
+                    $reply['auth']['username'] = $post['username'];
+                    $reply['auth']['token'] = randomString(20);
+                    $reply['auth']['nama'] = $nama;
+                    $reply['auth']['appid'] = $aplikasiid_add;
+                    $reply['auth']['group'] = $group;
+                    $reply['auth']['company'] = $company;
+                    $reply['auth']['id_wedding'] = $id_wedding;
+                    // $this->session->session_start();
+
+                    $this->session->set_userdata($reply);
+                    $strSqlUpLogin = "update app_user set user_token = '" . $reply['auth']['token'] . "', last_used = now(), ip = '$this->ip', status = 1,"
+                            . "appid = '$aplikasiid_add', salah_pin = 0 where user_id = '$noid' and user_real_name = '" . $post['username'] . "'";
+
+                    $this->db->query($strSqlUpLogin);
+                    redirect(base_url() . 'Dashboard');
+//                exit();
+                } else {
+                    $reply['code'] = '401';
+                    $reply['message'] = 'Password tidak sama';
+                    $this->load->view('login', $reply);
+//                exit();
+                }
             }
         } else {
             $reply['code'] = '401';
             $reply['message'] = 'Username tidak tersedia';
-            // redirect(base_url(),'Login');
+            $this->load->view('login', $reply);
+//            exit();
         }
-        echo json_encode($reply);
+//        echo json_encode($reply);
     }
 
     public function logout() {

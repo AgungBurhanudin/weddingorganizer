@@ -13,9 +13,10 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193578.74109041138!2d-73.97968099999997!3d40.70331274999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York+NYC%2C+New+York%2C+Statele+Unite+ale+Americii!5e0!3m2!1sro!2s!4v1425027721891" width="100%" height="200" frameborder="0" style="border:0"></iframe> 
 
             <div class="contact_info">
-                Adress: New York 23066 / Pacific Street / Brooklyn <br>
-                Email: email@yourwebsite.com <br>
-                Mobile: +900 456 567 77
+                <h4><?= $company->nama ?></h4>
+                Adress: <?= $company->alamat ?><br>
+                Email: <?= $company->email ?> <br>
+                Mobile: <?= $company->notelp ?>
             </div> 
 
             <div class="call_button"><a href="tel:+900 456 567 77" class="external ui-link">Call Us Now!</a></div>  

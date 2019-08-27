@@ -26,27 +26,36 @@
 
                 <div class="content-block-login">
                     <div class="form_logo">
-                    <center>
-                        <img src="<?= base_url() ?>assets/images/logo_mahkota.png" width="85%" style="margin: 0 auto"> 
-                    </center>LOGIN</div>
+                        <center>
+                            <img src="<?= base_url() ?>assets/images/logo_mahkota.png" width="85%" style="margin: 0 auto"> 
+                        </center>LOGIN</div>
 
                     <div class="loginform">
+                        <?php
+                        if (isset($message)) {
+                            ?>
+                            <div style="color: red; text-align: center; width:100%; ">
+                                <?= $message; ?>
+                            </div>
 
-                        <form id="LoginForm" method="post" action="Dashboard">
-                            <input type="text" name="Username" value="" class="form_input required" placeholder="username" data-role="none" />
-                            <input type="password" name="Password" value="" class="form_input required" placeholder="password" data-role="none" />
+                            <?php
+                        }
+                        ?>
+                        <form id="LoginForm" method="post" action="<?= base_url() ?>Login/login">
+                            <input type="text" name="username" value="" class="form_input required" placeholder="username" data-role="none" />
+                            <input type="password" name="password" value="" class="form_input required" placeholder="password" data-role="none" />
                             <div class="forgot_pass"><a href="forgotpass.html" data-transition="slidedown">Forgot Password?</a></div>
                             <input type="submit" name="submit" class="form_submit" id="submit" data-role="none" value="SIGN IN" />
                         </form>
 
-<!--                        <div class="signup_bottom">
-                            <p>Don't have an account?</p>
-                            <a href="register.html" data-transition="slidedown">SIGN UP</a>
-                        </div>-->
+                        <!--                        <div class="signup_bottom">
+                                                    <p>Don't have an account?</p>
+                                                    <a href="register.html" data-transition="slidedown">SIGN UP</a>
+                                                </div>-->
 
                     </div>
 
-                    
+
                 </div>
 
             </div><!-- /content -->

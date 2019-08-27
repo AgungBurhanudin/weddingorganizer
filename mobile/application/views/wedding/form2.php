@@ -158,34 +158,6 @@
         $(".id_wedding").val('<?= $id_wedding ?>');
 //    $("#detail_wedding *").attr("disabled", "disabled").off('click');
 
-        function saveacara(id, value, type = null) {
-            var id_wedding = $("#id_wedding").val();
-            if (type == "addabletext") {
-                var dataForm = new FormData($("#form" + value)[0]);
-                dataForm.append('id', id);
-                dataForm.append('id_wedding', id_wedding);
-                dataForm.append('type', type);
-                dataForm.append('value', value);
-                $.ajax({
-                    url: "<?= base_url() ?>Wedding/acara/add",
-                    type: "POST",
-                    data: dataForm,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                    }
-                });
-            } else {
-                dataForm = "id=" + id + "&value=" + value + "&id_wedding=" + id_wedding;
-                $.ajax({
-                    url: "<?= base_url() ?>Wedding/acara/add",
-                    type: "POST",
-                    data: dataForm,
-                    success: function (data) {
-                    }
-                });
-        }
-        }
 
         function saveupacara(id, value, type = null) {
             var id_wedding = $("#id_wedding").val();

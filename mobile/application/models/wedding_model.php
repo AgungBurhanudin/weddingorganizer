@@ -95,6 +95,40 @@ class Wedding_model extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result();
     }
+    
+    public function getOneData($id_wedding) {
+        $where = "AND a.id = '$id_wedding'";
+        $sql = "SELECT a.*,
+                b.nama_panggilan AS nama_pria, 
+                c.nama_panggilan AS nama_wanita,
+                b.photo AS foto_pria, 
+                c.photo AS foto_wanita,
+                e.user_real_name,
+                d.datetime,
+                d.deskripsi,
+                a.registration_date,
+                CONCAT(b.no_hp , '<br>', c.no_hp) AS cp
+                FROM wedding a   
+              LEFT JOIN 
+                (SELECT id_wedding,nama_lengkap, nama_panggilan, alamat_nikah, photo, no_hp 
+                FROM pengantin 
+                WHERE gender = 'L' ) b 
+              ON b.id_wedding = a.id 
+              LEFT JOIN 
+                (SELECT id_wedding,nama_lengkap, nama_panggilan, alamat_nikah, photo, no_hp
+                FROM pengantin 
+                WHERE gender = 'P' ) c 
+              ON c.id_wedding = a.id 
+              LEFT JOIN 
+                (SELECT * FROM log_aktivitas GROUP BY id_wedding ORDER BY datetime DESC LIMIT 1) d 
+              ON d.id_wedding = a.id 
+              LEFT JOIN app_user e 
+              ON d.id_user = e.user_id 
+              WHERE a.status = 1 $where 
+              ORDER BY a.tanggal DESC";
+        $query = $this->db->query($sql);
+        return $query->row();
+    }
 
     public function getData($id) {
         return $this->db->get_where($this->_table, ['id' => $id])->row();

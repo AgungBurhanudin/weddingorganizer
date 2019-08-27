@@ -1,10 +1,10 @@
 <?php
-
-        error_reporting(E_ALL);
-        ini_set('display_errors', TRUE);
-        ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once dirname(__FILE__) . '/../libraries/PHPExcelTemplate/samples/Bootstrap.php';
+
 class Wedding extends CI_Controller {
 
     public function __construct() {
@@ -12,7 +12,7 @@ class Wedding extends CI_Controller {
         $this->load->model(array('wedding_model'));
         $this->load->library('form_validation');
         $this->PhpExcelTemplator = new alhimik1986\PhpExcelTemplator\PhpExcelTemplator;
-        checkToken();
+//        checkToken();
     }
 
     public function index() {

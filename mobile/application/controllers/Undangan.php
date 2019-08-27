@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Cetak extends CI_Controller {
+class Undangan extends CI_Controller {
 
     public $auth;
     public $group;
@@ -20,6 +20,11 @@ class Cetak extends CI_Controller {
     }
 
     public function index() {
-        render('buku');
+        $id = $this->id_wedding;
+        $data = array(
+            'undangan' => $this->db->query("SELECT * FROM undangan WHERE id_wedding = '$id'")->result(),
+        );
+        render('undangan', $data);
     }
+
 }

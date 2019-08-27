@@ -190,4 +190,7 @@
                     padding: 5px;
                     text-align: left;
                 }
+                .form_input{
+                    width: 100%;
+                }
             </style>

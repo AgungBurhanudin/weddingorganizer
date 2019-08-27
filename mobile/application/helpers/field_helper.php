@@ -18,7 +18,7 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
     switch ($type) {
         case 'text':
             $size_field = !empty($ukuran) ? $ukuran : 100;
-            $field_input = '<input name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form-control" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" size="' . $size_field . '" ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form_input" data-role="none" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" size="' . $size_field . '" ' . $tagWajib . ' />' . $tagBintang;
             break;
         case 'textarea':
             $field_size = '';
@@ -26,7 +26,7 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
             if (!empty($ukuran) && count($arr_field_size) == 2) {
                 $field_size = ' cols="' . $arr_field_size[0] . '" rows="' . $arr_field_size[1] . '" ';
             }
-            $field_input = '<textarea name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form-control" ' . $field_size . '  ' . $tagWajib . ' >' . $value . '</textarea>' . $tagBintang;
+            $field_input = '<textarea name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '" type="text" class="form_input" data-role="none" ' . $field_size . '  ' . $tagWajib . ' >' . $value . '</textarea>' . $tagBintang;
             break;
         case 'combobox':
             $field_option = '';
@@ -42,7 +42,7 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
             }
 
             $field_input = '
-        		<select onchange="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '"  ' . $tagWajib . ' >
+        		<select onchange="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form_input" data-role="none" name="' . $nameInputPrefix . '" id="' . $nameInputPrefix . $id . '"  ' . $tagWajib . ' >
         			<option value="">-- Pilih --</option>
         			' . $field_option . '
         		</select>
@@ -51,17 +51,17 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
             break;
         case 'desimal':
             $size_field = !empty($ukuran) ? $ukuran : 15;
-            $field_input = '<input style="text-align:right;" class="form-control" type="decimal" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . number_format($value, 2) . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input style="text-align:right;" class="form_input" data-role="none" type="decimal" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . number_format($value, 2) . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
 
             break;
         case 'angka':
             $value = $value != "" ? number_format($value, 2) : 0;
             $size_field = !empty($ukuran) ? $ukuran : 15;
-            $field_input = '<input style="text-align:right;" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" type="number" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input style="text-align:right;" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form_input" data-role="none" type="number" ' . $addToInputHtml . ' class="" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="' . $size_field . '"  ' . $tagWajib . ' />' . $tagBintang;
 
             break;
         case 'tanggal':
-            $field_input = '<input type="date" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form-control" data-force="true" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="35"  ' . $tagWajib . ' />' . $tagBintang;
+            $field_input = '<input type="date" onkeyup="save' . $form . '(' . $id . ',this.value)" value="' . $value . '" class="form_input" data-role="none" data-force="true" name="' . $nameInputPrefix . $id . '" id="' . $nameInputPrefix . $id . '" value="' . $value . '" size="35"  ' . $tagWajib . ' />' . $tagBintang;
 
             break;
         case 'checkbox':
@@ -80,8 +80,8 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
 
             $size_field = 100;
             $columns = explode("||", $ukuran);
-            $field_input = "<button type='button' onclick='add$nameInputPrefix()'><i class='fa fa-plus'></i></button>"
-                    . "<form action='#' id='form$nameInputPrefix'><table class='table'><thead><tr>";
+            $field_input = "<button type='button' onclick='add$nameInputPrefix()'>+</button>"
+                    . "<form action='#' id='form$nameInputPrefix'><table class='table' width='100%'><thead><tr>";
             foreach ($columns as $v) {
                 $field_input .= "<td>$v</td>";
             }
@@ -95,11 +95,11 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
                     $tag = strtolower(str_replace(array(" ", "/"), array("_", "_"), $v));
                     $isi = isset($val[$k]) ? $val[$k] : "";
                     $field_input .= "<td>";
-                    $field_input .= '<input value="' . $isi . '" onkeyup="save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ', ' . "'addabletext'" . ')" name=' . $nameInputPrefix . "[$index][]" . ' id=' . $nameInputPrefix . $id . ' type=text class=form-control />';
+                    $field_input .= '<input value="' . $isi . '" onkeyup="save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ', ' . "'addabletext'" . ')" name=' . $nameInputPrefix . "[$index][]" . ' id=' . $nameInputPrefix . $id . ' type=text class=form_input data-role=none />';
 
                     $field_input .= "</td>";
                 }
-                $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'><i class='fa fa-trash'></i></button></td>";
+                $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'>-</button></td>";
                 $field_input .= "<tr>";
                 $index++;
             }
@@ -111,11 +111,11 @@ function Form($nameInputPrefix, $id, $name, $value, $type, $ukuran, $is_wajib, $
             foreach ($columns as $v) {
                 $tag = strtolower(str_replace(array(" ", "/"), array("_", "_"), $v));
                 $field_input .= "<td>";
-                $field_input .= '<input onkeyup=save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ",'addabletext'" . ') name=' . $nameInputPrefix . '["+baris+"][]' . ' id=' . $nameInputPrefix . $id . ' type=text class=form-control />';
+                $field_input .= '<input onkeyup=save' . $form . '(' . $id . ',' . "'$nameInputPrefix'" . ",'addabletext'" . ') name=' . $nameInputPrefix . '["+baris+"][]' . ' id=' . $nameInputPrefix . $id . ' type=text class=form_input data-role=none />';
 
                 $field_input .= '</td>';
             }
-            $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'><i class='fa fa-trash'></i></button></td>";
+            $field_input .= "<td><button type='button' onclick='remove$nameInputPrefix(this)'>-</button></td>";
             $field_input .= '</tr>";';
             $field_input .= "$('#add$nameInputPrefix').append(data);";
             $field_input .= "};";

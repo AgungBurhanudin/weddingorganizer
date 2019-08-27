@@ -10,17 +10,35 @@ class User extends CI_Controller {
     }
 
     public function index() {
-        $query = "SELECT a.*,b.nama_kategori FROM user a LEFT JOIN kategori_user b ON a.id_kategori = b.id";
+        $auth = $this->session->userdata('auth');
+        $group = $auth['group'];
+        $id_company = $auth['company'];
+        if ($group == 1) {
+            $query = "SELECT * FROM app_user";
+        } else {
+            $query = "SELECT * FROM app_user WHERE user_company = '$id_company'";
+        }
+
         $data = array(
-            'data' => $this->db->get('app_user')->result(),
+            'data' => $this->db->query($query)->result(),
         );
         render('user/data', $data);
     }
 
     public function add() {
+        $auth = $this->session->userdata('auth');
+        $group = $auth['group'];
+        $id_company = $auth['company'];
+        if ($group != 1) {
+            $company = "SELECT * FROM company WHERE id = '$id_company'";
+            $app_group = "SELECT * FROM app_group WHERE group_id != 1";
+        } else {
+            $company = "SELECT * FROM company";
+            $app_group = "SELECT * FROM app_group ";
+        }
         $data = array(
-            'data_company' => $this->db->get('company')->result(),
-            'app_group' => $this->db->get('app_group')->result(),
+            'data_company' => $this->db->query($company)->result(),
+            'app_group' => $this->db->query($app_group)->result(),
         );
         render('user/form', $data);
     }
@@ -81,11 +99,21 @@ class User extends CI_Controller {
     }
 
     public function edit() {
+        $auth = $this->session->userdata('auth');
+        $group = $auth['group'];
+        $id_company = $auth['company'];
+        if ($group != 1) {
+            $company = "SELECT * FROM company WHERE id = '$id_company'";
+            $app_group = "SELECT * FROM app_group WHERE group_id != 1";
+        } else {
+            $company = "SELECT * FROM company";
+            $app_group = "SELECT * FROM app_group ";
+        }
         $key['user_id'] = $this->input->get("id");
         $data = array(
             'data_user' => $this->db->get_where("app_user", $key)->result(),
-            'data_company' => $this->db->get('company')->result(),
-            'app_group' => $this->db->get('app_group')->result(),
+            'data_company' => $this->db->query($company)->result(),
+            'app_group' => $this->db->query($app_group)->result(),
         );
         render("user/form", $data);
     }
