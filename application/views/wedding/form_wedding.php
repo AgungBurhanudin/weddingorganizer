@@ -31,8 +31,11 @@ if (!empty($wedding)) {
     $status = "";
 }
 ?>
+<form class="form-horizontal" action="#" id="formWedding" method="post">
+    <input type="hidden" name="id" value="<?= $id ?>">
+    <input type="hidden" name="id_wedding" value="<?= $id_wedding ?>">
 <div style="float: right">
-    <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
+    <button type="submit" onclick="simpanWedding()" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
 </div>
 <h2>Data Pernikahan</h2>
 <hr>
@@ -84,6 +87,48 @@ if (!empty($wedding)) {
         </div>
     </div>
 </div>
+</form>
 <script>
     $("#penyelenggara").val('<?= $penyelenggara ?>');
+</script>
+
+<script>
+
+    function simpanWedding()() {
+        var formData = new FormData($("#formWedding")[0]);
+        $('#formWedding').validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 2
+                },
+                tanggal: "required"
+            },
+            messages: {
+                title: {
+                    required: "Please enter a Nama Vendor",
+                    minlength: "Nama Vendor minimal 2 karakter"
+                },
+                tanggal: "Pilih Tanggal Pernikahan"
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url() ?>Wedding/saveWedding',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    dataType: "JSON",
+                    success: function (data) {
+//                        if (data) {
+                            swal("success", "Berhasil merubah data pernikahan!");
+//                            $("#vendorModal").modal('hide');
+//                        } else {
+//                            swal("warning", "Gagal menambah vendor!");
+//                        }
+                    }
+                });
+            }
+        });
+    }
 </script>

@@ -192,6 +192,128 @@ class Wedding extends CI_Controller {
         render('wedding/form2', $data);
     }
 
+    public function saveWedding() {
+      $data['title']  = $_POST["title"];
+      $data['tanggal']  = $_POST["tanggal_pernikahan"];
+      $data['waktu']  = $_POST["waktu_pernikahan"];
+      $data['tempat']  = $_POST["lokasi_pernikahan"];
+      $data['alamat']  = $_POST["alamat_pernikahan"];
+      $data['tema']  = $_POST["tema_pernikahan"];
+      $data['hashtag']  = $_POST["hastag_pernikahan"];
+      $data['penyelenggara']  = $_POST["penyelenggara"];
+      $data['undangan']  = $_POST["jumlah_undangan"];
+      $data['status'] = 1;
+      $key['id']  = $_POST['id'];
+      $this->db->update('wedding', $data, $key);
+    }
+
+    public function saveBiodataPria() {
+        $id = $_POST['id_wedding'];
+        $data['id_wedding'] = $id;
+        $data['gender'] = "L";
+        $data['nama_lengkap'] = isset($_POST["nama_lengkap_pria"]) ? $_POST["nama_lengkap_pria"] : "";
+        $data['nama_panggilan'] = $_POST['nama_panggilan_pria'];
+        $data['alamat_sekarang'] = $_POST['alamat_sekarang_pria'];
+        $data['alamat_nikah'] = $_POST['alamat_nikah_pria'];
+        $data['tempat_lahir'] = $_POST['tempat_lahir_pria'];
+        $data['tanggal_lahir'] = $_POST['tanggal_lahir_pria'];
+        $data['no_hp'] = $_POST['no_hp_pria'];
+        $data['agama'] = $_POST['agama_pria'];
+        $data['pendidikan'] = $_POST['pendidikan_pria'];
+        $data['hobi'] = $_POST['hobi_pria'];
+        $data['sosmed'] = 1;
+        $data['status'] = 1;
+
+        if (isset($_FILES)) {
+            $path = realpath(APPPATH . '../../files/images/');
+
+            $this->upload->initialize(array(
+                'upload_path' => $path,
+                'allowed_types' => 'png|jpg|gif',
+                'max_size' => '5000',
+                'max_width' => '3000',
+                'max_height' => '3000'
+            ));
+
+            if ($this->upload->do_upload('foto_pria')) {
+                $data_upload = $this->upload->data();
+                $this->image_lib->initialize(array(
+                    'image_library' => 'gd2',
+                    'source_image' => $path . '/' . $data_upload['file_name'],
+                    'maintain_ratio' => false,
+                    //  'create_thumb' => true,
+                    'overwrite' => TRUE
+                ));
+                if ($this->image_lib->resize()) {
+                    $data['photo'] = $data_upload['raw_name'] . $data_upload['file_ext'];
+                } else {
+                    $data['photo'] = $data_upload['file_name'];
+                }
+            } else {
+//                $data['photo'] = "";
+            }
+        } else {
+//            $data['photo'] = "";
+        }
+
+        $key['id'] = $_POST['id'];
+        $this->db->update('pengantin', $data, $key);
+        
+    }
+
+    public function saveBiodataWanita() {
+        $id = $_POST['id_wedding'];
+        $_POST = $this->input->post();
+        $data['id_wedding'] = $id;
+        $data['gender'] = "P";
+        $data['nama_lengkap'] = $_POST["nama_lengkap_wanita"];
+        $data['nama_panggilan'] = $_POST['nama_panggilan_wanita'];
+        $data['alamat_sekarang'] = $_POST['alamat_sekarang_wanita'];
+        $data['alamat_nikah'] = $_POST['alamat_nikah_wanita'];
+        $data['tempat_lahir'] = $_POST['tempat_lahir_wanita'];
+        $data['tanggal_lahir'] = $_POST['tanggal_lahir_wanita'];
+        $data['no_hp'] = $_POST['no_hp_wanita'];
+        $data['agama'] = $_POST['agama_wanita'];
+        $data['pendidikan'] = $_POST['pendidikan_wanita'];
+        $data['hobi'] = $_POST['hobi_wanita'];
+        $data['sosmed'] = $_POST['sosmed_wanita'];
+        $data['status'] = 1;
+        if (isset($_FILES)) {
+            $path = realpath(APPPATH . '../../files/images/');
+
+            $this->upload->initialize(array(
+                'upload_path' => $path,
+                'allowed_types' => 'png|jpg|gif',
+                'max_size' => '5000',
+                'max_width' => '3000',
+                'max_height' => '3000'
+            ));
+
+            if ($this->upload->do_upload('foto_wanita')) {
+                $data_upload = $this->upload->data();
+                $this->image_lib->initialize(array(
+                    'image_library' => 'gd2',
+                    'source_image' => $path . '/' . $data_upload['file_name'],
+                    'maintain_ratio' => false,
+                    //  'create_thumb' => true,
+                    'overwrite' => TRUE
+                ));
+                if ($this->image_lib->resize()) {
+                    $data['photo'] = $data_upload['raw_name'] . $data_upload['file_ext'];
+                } else {
+                    $data['photo'] = $data_upload['file_name'];
+                }
+            } else {
+//                $data['photo'] = "";
+            }
+        } else {
+//            $data['photo'] = "";
+        }
+        $key['id'] = $_POST['id'];
+        $this->db->update('pengantin', $data, $key);
+        
+    }
+    
     public function vendor() {
         $uri = $this->uri->segment(3);
         $this->db->where('id', $uri);

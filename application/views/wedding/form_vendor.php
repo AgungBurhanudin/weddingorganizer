@@ -28,7 +28,7 @@
                     <td><?= $val->nama_vendor ?></td>
                     <td><?= $val->cp ?></td>
                     <td><?= $val->nohp_cp ?></td>
-                    <td><?= $val->kategori_nama ?></td>
+                    <td><?= $val->nama_kategori ?></td>
                     <td><?= $val->biaya ?></td>
                     <td>
                         <a href="<?= base_url() ?>Wedding/vendor/edit?id=<?= $val->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>

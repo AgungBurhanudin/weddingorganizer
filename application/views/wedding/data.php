@@ -47,7 +47,7 @@
                                             <tr>
                                                 <td class="text-center" nowrap="nowarap">
                                                     <div class="avatar">
-                                                        <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $d->foto_pria ?>" alt="<?= $d->nama_pria ?>">
+                                                        <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $d->foto_pria != "" ? $d->foto_pria : "user.jpg" ?>" alt="<?= $d->nama_pria ?>">
                                                     </div>
                                                     <div class="avatar">
                                                         <img class="img-avatar" src="<?= base_url() ?>files/images/<?= $d->foto_wanita != "" ? $d->foto_wanita : "user.jpg" ?>" alt="<?= $d->nama_wanita ?>">

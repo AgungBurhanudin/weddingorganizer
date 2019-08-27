@@ -41,8 +41,11 @@ if (!empty($wanita)) {
     $photo = "user.jpg";
 }
 ?>
+<form class="form-horizontal" action="#" id="formPengantinWanita" method="post">
+    <input type="hidden" name="id" value="<?= $id ?>">
+    <input type="hidden" name="id_wedding" value="<?= $id_wedding ?>">
 <div style="float: right">
-    <button type="button" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
+    <button type="submit" onclick="simpanPengantinWanita()" class="btn btn-mini btn-primary"><i class="fa fa-save"></i> Simpan</button>
 </div>
 <h2>Biodata Pengantin Wanita</h2>
 <hr>
@@ -110,7 +113,7 @@ if (!empty($wanita)) {
         </div>
     </div>
 </div>
-
+</form>
 <script>
     $("#id_wanita").val('<?= $id ?>');
     $("#id_wedding_wanita").val('<?= $id_wedding ?>');
@@ -128,4 +131,44 @@ if (!empty($wanita)) {
     $("#sosmed_wanita").val('<?= $sosmed ?>');
     $("#status_wanita").val('<?= $status ?>');
     $("#photoWanita").attr('style','background: url(<?= base_url() ."/files/images/" .$photo ?>) no-repeat center center; background-size:cover;');
+</script>
+<script>
+
+    function simpanPengantinWanita() {
+        var formData = new FormData($("#formPengantinWanita")[0]);
+        $('#formPengantinWanita').validate({
+            rules: {
+                nama_lengkap_wanita: {
+                    required: true,
+                    minlength: 2
+                },
+                nama_panggilan_wanita: "required"
+            },
+            messages: {
+                nama_lengkap_wanita: {
+                    required: "Please enter a Nama Vendor",
+                    minlength: "Nama Vendor minimal 2 karakter"
+                },
+                nama_panggilan_wanita: "Pilih Pembayaran"
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url() ?>Wedding/saveBiodataWanita',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    dataType: "JSON",
+                    success: function (data) {
+//                        if (data) {
+                            swal("success", "Berhasil merubah biodata pengantin wanita!");
+//                            $("#vendorModal").modal('hide');
+//                        } else {
+//                            swal("warning", "Gagal menambah vendor!");
+//                        }
+                    }
+                });
+            }
+        });
+    }
 </script>
